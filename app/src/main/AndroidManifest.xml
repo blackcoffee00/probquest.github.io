@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LoginScreen"
+        tools:targetApi="31">
+        <activity
+            android:name=".ProbabilityFairActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tests.summative.SummativeTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tests.topicfive.TopicFivePostTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tests.topicfour.TopicFourPostTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tests.topicthree.TopicThreePostTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tests.topictwo.TopicTwoPostTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tests.topicone.TopicOnePostTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.study.TopicFiveActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.study.TopicFourActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.study.TopicThreeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.study.TopicTwoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.study.TopicOneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tests.topicfive.TopicFivePreTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tests.topicfour.TopicFourPreTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tests.topicthree.TopicThreePreTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tests.topictwo.TopicTwoPreTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tests.topicone.TopicOnePreTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NavigationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_navigation" />
+        <activity
+            android:name=".AddUsersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

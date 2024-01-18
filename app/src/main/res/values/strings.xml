@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">ProbQuest</string>
+
+    <string name="title_study">Study</string>
+    <string name="title_tests">Tests</string>
+    <string name="title_games">Games</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string-array name="topic_titles">
+        <item>Simple Events</item>
+        <item>Union and Intersection of Events</item>
+        <item>Mutually and Non-Mutually Exclusive Events</item>
+        <item>Dependent and Independent Events</item>
+        <item>Probability of Independent Events</item>
+    </string-array>
+
+    <string name="instruction_1">Please carefully read each question and select your answer from the multiple-choice options</string>
+    <string name="instruction_2">Choose only one answer per question and click next to proceed to the next one.</string>
+    <string name="instruction_3">You have a 60 seconds time limit per question.</string>
+    <string name="instruction_4">Your score will display after answering all 10 questions. Good luck!</string>
+
+    <string-array name="topic_one_pre_test_questions">
+        <item>If you flip a fair coin three times, what is the probability of getting exactly two heads?</item>
+        <item>If a month is picked at random, what is the probability that the month will start with M?</item>
+        <item>When you roll a pair of dice, how many outcomes are there?</item>
+        <item>A bag contains 4 red balls and 6 blue balls. What is the probability of drawing a red ball?</item>
+        <item>What is the probability of rolling an even number on a six-sided die?</item>
+    </string-array>
+
+    <string-array name="topic_one_pre_test_item1_options">
+        <item>1/4</item>
+        <item>3/8</item>
+        <item>1/2</item>
+        <item>1/8</item>
+    </string-array>
+
+    <string-array name="topic_one_pre_test_item2_options">
+        <item>1/12</item>
+        <item>1/6</item>
+        <item>2/6</item>
+        <item>4/12</item>
+    </string-array>
+
+    <string-array name="topic_one_pre_test_item3_options">
+        <item>6</item>
+        <item>12</item>
+        <item>36</item>
+        <item>24</item>
+    </string-array>
+
+    <string-array name="topic_one_pre_test_item4_options">
+        <item>2/5</item>
+        <item>3/5</item>
+        <item>1/4</item>
+        <item>2/3</item>
+    </string-array>
+
+    <string-array name="topic_one_pre_test_item5_options">
+        <item>1/6</item>
+        <item>1/2</item>
+        <item>2/3</item>
+        <item>1/3</item>
+    </string-array>
+
+</resources>
