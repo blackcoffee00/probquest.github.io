@@ -7,68 +7,105 @@
     android:background="@color/blue"
     tools:context=".ui.tests.topicone.TopicOnePreTestActivity">
 
-
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="5dp">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/topicOnePreTestEnterPasscode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="Enter Passcode"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/topicOnePreTestPasscode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_edit_passcode"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/topicOnePreTestBackCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_button"
+                    android:backgroundTint="@color/black"
+                    android:text="Exit"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/topicOnePreTestSend"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_button"
+                    android:text="Send"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/topicOnePreTestInstruction"
-            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="20dp"
-            android:orientation="vertical">
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="Simple Events Pre-Test"
-                android:textSize="18sp"
+                android:text="Probability of Simple Events Pre-Test"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
-                android:text="@string/instruction_1"
-                android:textSize="18sp"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:text="@string/instruction_2"
-                android:textSize="18sp"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:text="@string/instruction_3"
-                android:textSize="18sp"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:text="@string/instruction_4"
-                android:textSize="18sp"
-                android:textColor="@color/black"/>
+                android:text="@string/direction"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -82,22 +119,22 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_weight="1"
-                    android:text="Exit"
-                    android:textColor="@color/white"
                     android:background="@drawable/custom_button"
-                    android:backgroundTint="@color/black"/>
+                    android:backgroundTint="@color/black"
+                    android:text="Exit"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/topicOnePreTestStart"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
                     android:layout_weight="1"
-                    android:text="Start"
-                    android:textColor="@color/white"
                     android:background="@drawable/custom_button"
-                    android:backgroundTint="@color/sea_green"/>
+                    android:backgroundTint="@color/sea_green"
+                    android:text="Start"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
@@ -105,11 +142,11 @@
 
         <LinearLayout
             android:id="@+id/topicOnePreTest"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="20dp"
-            android:orientation="vertical">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,33 +160,33 @@
                     android:layout_weight="3"
                     android:text="1 of 10 Questions"
                     android:textColor="@color/black"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/topicOnePreTestTimer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="10dp"
                     android:background="@drawable/custom_option_button"
                     android:backgroundTint="@color/sea_green"
+                    android:drawableStart="@drawable/outline_alarm_24"
+                    android:padding="10dp"
                     android:text="01:00"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
                     android:textAlignment="center"
-                    android:drawableStart="@drawable/outline_alarm_24"/>
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/topicOnePreTestProgress"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:progress="0"
                 android:max="5"
-                android:progressTint="@color/blue"/>
+                android:progress="0"
+                android:progressTint="@color/blue" />
 
             <TextView
                 android:id="@+id/topicOnePreTestQuestion"
@@ -157,8 +194,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
                 android:text="Question"
-                android:textSize="18sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -173,9 +210,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/custom_option_button"
                     android:text="option A"
-                    android:textSize="18sp"
+                    android:textAllCaps="false"
                     android:textColor="@color/black"
-                    android:textAllCaps="false"/>
+                    android:textSize="18sp" />
 
                 <Button
                     android:id="@+id/topicOnePreTestOptB"
@@ -184,9 +221,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/custom_option_button"
                     android:text="option B"
-                    android:textSize="18sp"
+                    android:textAllCaps="false"
                     android:textColor="@color/black"
-                    android:textAllCaps="false"/>
+                    android:textSize="18sp" />
 
                 <Button
                     android:id="@+id/topicOnePreTestOptC"
@@ -195,9 +232,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/custom_option_button"
                     android:text="option C"
-                    android:textSize="18sp"
+                    android:textAllCaps="false"
                     android:textColor="@color/black"
-                    android:textAllCaps="false"/>
+                    android:textSize="18sp" />
 
                 <Button
                     android:id="@+id/topicOnePreTestOptD"
@@ -205,9 +242,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_option_button"
                     android:text="option D"
-                    android:textSize="18sp"
+                    android:textAllCaps="false"
                     android:textColor="@color/black"
-                    android:textAllCaps="false"/>
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -215,71 +252,122 @@
                 android:id="@+id/topicOnePreTestNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_gravity="end"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/custom_button"
                 android:backgroundTint="@color/black"
                 android:text="Next"
                 android:textColor="@color/white"
-                android:visibility="invisible"/>
+                android:visibility="invisible" />
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/topicOnePreTestScore"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:orientation="vertical">
+            android:visibility="visible">
 
-            <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:src="@drawable/crown"/>
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:layout_centerInParent="true"
+                app:lottie_rawRes="@raw/confetti"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"/>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Pre-Test Completed!"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-            <TextView
-                android:id="@+id/topicOnePerTestScoreDisp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Your Score is 0 out of 10."
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="18sp"/>
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/crown" />
 
-            <TextView
-                android:id="@+id/topicOnePerTestTimeDisp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Total time: 0 seconds"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Pre-Test Complete!"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/topicOnePreTestExit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Exit"
-                android:textColor="@color/white"
-                android:background="@drawable/custom_button"
-                android:backgroundTint="@color/black"/>
+                <TextView
+                    android:id="@+id/topicOnePerTestScoreDisp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Your Score is 0 out of 10."
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/topicOnePerTestTimeDisp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Your Time is 0 seconds"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/topicOnePreTestResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_button"
+                    android:backgroundTint="@color/sea_green"
+                    android:text="View Result"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:id="@+id/t1PreTestHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/t1PreTestExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/t1PreTestScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score 0/10"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/topicOnePreTestListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/t1PreTestHeader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

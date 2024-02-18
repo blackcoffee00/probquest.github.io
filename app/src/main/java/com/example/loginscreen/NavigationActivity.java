@@ -33,12 +33,15 @@ public class NavigationActivity extends AppCompatActivity {
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_navigation);
         NavigationUI.setupWithNavController(binding.navView, navController);
-/**
+
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("loadToTestsFragment")) {
             int fragmentId = intent.getIntExtra("loadToTestsFragment", R.id.navigation_study);
             navView.setSelectedItemId(fragmentId);
         }
- */
+        if (intent != null && intent.hasExtra("loadToProfileFragment")) {
+            int fragmentId = intent.getIntExtra("loadToProfileFragment", R.id.navigation_study);
+            navView.setSelectedItemId(fragmentId);
+        }
     }
 }

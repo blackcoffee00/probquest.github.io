@@ -1,19 +1,19 @@
 package com.example.loginscreen.ui.tests;
 
-import android.content.Intent;
-
 public class TestsModelClass {
-    private Integer id;
+    private Integer id, testCode;
     private String score, time;
 
     public TestsModelClass(String score, String time) {
         this.id = id;
+        this.testCode = testCode;
         this.score = score;
         this.time = time;
     }
 
-    public TestsModelClass(Integer id, String score, String time) {
+    public TestsModelClass(Integer id, Integer testCode, String score, String time) {
         this.id = id;
+        this.testCode = testCode;
         this.score = score;
         this.time = time;
     }
@@ -24,6 +24,14 @@ public class TestsModelClass {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getTestCode() {
+        return testCode;
+    }
+
+    public void setTestCode(Integer testCode) {
+        this.testCode = testCode;
     }
 
     public String getScore() {

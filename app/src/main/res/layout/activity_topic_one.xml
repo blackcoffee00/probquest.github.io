@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp">
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/topicOneBack"
@@ -33,13 +33,407 @@
 
     </RelativeLayout>
 
-    <ScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/upper_corner"
-        android:paddingTop="20dp"
-        android:paddingHorizontal="10dp">
+        android:layout_height="match_parent">
 
-    </ScrollView>
+        <ScrollView
+            android:id="@+id/t1ScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/upper_corner"
+            android:paddingTop="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/custom_edit_passcode">
+
+                    <TextView
+                        android:id="@+id/t1TextViewTitle1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/round_lightbulb_circle_24"
+                        android:drawablePadding="4dp"
+                        android:text="Objectives"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:id="@+id/t1TextView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:text="In this lesson we will learn how to find the probability of simple events."
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_gravity="center">
+
+                    <VideoView
+                        android:id="@+id/t1Video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="200dp"/>
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:textStyle="italic"
+                    android:text="Video Source: https://youtu.be/0elmOW1HJdg?si=r2sUTfiNW7e-5XbQ"/>
+
+                <TextView
+                    android:id="@+id/t1TextViewTitle2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Introduction to lesson"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"/>
+
+                <TextView
+                    android:id="@+id/t1TextView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginStart="20dp"
+                    android:text="In probability, a simple event refers to an event with a single outcome. Examples of simple events include rolling a die and getting a 6, flipping a coin and getting heads, or drawing an Ace from a deck of cards. When finding the probability of events occurring, we will use the formula:"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <ru.noties.jlatexmath.JLatexMathView
+                    android:id="@+id/t1Latex_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:jlmv_alignHorizontal="center"
+                    app:jlmv_textSize="16sp"
+                    app:jlmv_textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:text="or"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <ru.noties.jlatexmath.JLatexMathView
+                    android:id="@+id/t1Latex_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:jlmv_alignHorizontal="center"
+                    app:jlmv_textSize="16sp"
+                    app:jlmv_textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:text="in symbols"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <ru.noties.jlatexmath.JLatexMathView
+                    android:id="@+id/t1Latex_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:jlmv_alignHorizontal="center"
+                    app:jlmv_textSize="16sp"
+                    app:jlmv_textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextViewTitle3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Illustrative Examples"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"/>
+
+                <TextView
+                    android:id="@+id/t1TextView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="1. One card is drawn from a well-shuffled deck of 52 cards. What is the probability of drawing"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="a. a face card,\nb. a red card,\nc. a queen of hearts, and\nd. an ace?"
+                    android:layout_columnWeight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Solution"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="a. P(face card)"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="100dp"
+                    android:layout_marginVertical="10dp"
+                    android:columnCount="4"
+                    android:rowCount="3">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/clubs_11"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/spades_11"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/hearts_11"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/diamonds_11"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/clubs_12"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/spades_12"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_columnWeight="1"
+                        android:src="@drawable/hearts_12"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_columnWeight="1"
+                        android:src="@drawable/diamonds_12"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/clubs_13"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_columnWeight="1"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/spades_13"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_columnWeight="1"
+                        android:src="@drawable/hearts_13"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_columnWeight="1"
+                        android:src="@drawable/diamonds_13"/>
+
+                </GridLayout>
+
+                <TextView
+                    android:id="@+id/t1TextView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="40dp"
+                    android:text="Event E = drawing a face card"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/light_blue"
+                    android:padding="5dp"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:text="Thus,"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <ru.noties.jlatexmath.JLatexMathView
+                    android:id="@+id/t1Latex_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:jlmv_alignHorizontal="center"
+                    app:jlmv_textSize="16sp"
+                    app:jlmv_textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Sample Space S =\n{Diamonds: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King,\nHearts: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King,\nSpades: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King,\nClubs: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King}"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="2. A blue and a yellow dice are rolled. Find the probability of the following events."
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="a. The blue die shows 5\nb. The sum of two numbers is 11\nc. The sum of two numbers is greater than 10\nd. The sum of two numbers is less than 7"
+                    android:layout_columnWeight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="3. Three coins are tossed, what is the probability of each of the following events."
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="a. three heads will occur\nb. no tails showing\nc. getting exactly at least one tail\nd. getting exactly at least two heads"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="4. A box contains 9 violet marbles, 8 yellow marbles, and 3 green marbles. If a marble is picked at random, what is the probability that it is"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="a. a white marble\nb. a yellow marble\nc. violet marble\nd. not green marble"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t1TextView19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="5. A coin is tossed. What is the probability of getting a head?"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <ZoomControls
+            android:id="@+id/t1ZoomControls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_anchor="@+id/t1ScrollView"
+            app:layout_anchorGravity="bottom|center"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>

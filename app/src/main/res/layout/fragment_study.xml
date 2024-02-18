@@ -1,29 +1,593 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/blue"
+    android:background="@color/white"
     tools:context=".ui.study.StudyFragment">
 
-    <TextView
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Learn Probability"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:padding="15dp"/>
+        android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/listViewStudy"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/tutorialStudy"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="right"
+                android:background="@drawable/custom_round"
+                android:backgroundTint="@color/bright_gray"
+                android:drawableStart="@drawable/baseline_play_arrow_24"
+                android:paddingHorizontal="15dp"
+                android:text="Tutorial"
+                android:textColor="@color/black"
+                android:textAllCaps="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="Hi, Jessica!"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="Level Up Your Understanding of Probability"/>
+
+            <androidx.appcompat.widget.SearchView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/custom_searchview"
+                app:queryHint="Search"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent"/>
+
+            <!--Probability Quest-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginHorizontal="80dp"
+                    android:layout_marginVertical="15dp"
+                    app:cardBackgroundColor="@color/bright_gray"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Welcome!"
+                            android:textColor="@color/blue"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="Start your quest here"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <Button
+                            android:id="@+id/questBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/custom_round"
+                            android:backgroundTint="@color/black"
+                            android:drawableEnd="@drawable/round_arrow_forward_24"
+                            android:paddingHorizontal="20dp"
+                            android:text="Quest"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <ImageView
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_marginEnd="40dp"
+                    android:src="@drawable/quest"
+                    android:elevation="5dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:text="Topics"/>
+
+            <!--Simple Events-->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:cardBackgroundColor="#cee1ff"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="15dp">
+
+                    <TextView
+                        android:id="@+id/textView1T1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="115dp"
+                        android:text="Simple Events"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <ImageView
+                        android:id="@+id/imageViewT1"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_marginStart="15dp"
+                        android:src="@drawable/topic_1"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/textView2T1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="115dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_below="@id/textView1T1"
+                        android:layout_alignParentStart="true"/>
+
+                    <Button
+                        android:id="@+id/topic1"
+                        android:layout_width="120dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/custom_round"
+                        android:text="Start Lesson"
+                        android:textAllCaps="false"
+                        android:layout_below="@id/textView2T1"
+                        android:layout_alignParentStart="true"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Compound Events-->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                app:cardBackgroundColor="#e3f1ba"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="15dp">
+
+                    <TextView
+                        android:id="@+id/textView1T2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Compound Events"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <ImageView
+                        android:id="@+id/imageViewT2"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_marginStart="15dp"
+                        android:src="@drawable/topic_2"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <TextView
+                        android:id="@+id/textView2T2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="115dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_below="@id/textView1T2"
+                        android:layout_alignParentStart="true"/>
+
+                    <Button
+                        android:id="@+id/topic2"
+                        android:layout_width="120dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/custom_round"
+                        android:text="Start Lesson"
+                        android:textAllCaps="false"
+                        android:layout_below="@id/textView2T2"
+                        android:layout_alignParentStart="true"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Mutually Exclusive Events-->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:cardBackgroundColor="#f2d1e7"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="15dp">
+
+                    <TextView
+                        android:id="@+id/textView1T3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Mutually Exclusive Events"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <ImageView
+                        android:id="@+id/imageViewT3"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_marginStart="15dp"
+                        android:src="@drawable/topic_3"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <TextView
+                        android:id="@+id/textView2T3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="115dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_below="@id/textView1T3"
+                        android:layout_alignParentStart="true"/>
+
+                    <Button
+                        android:id="@+id/topic3"
+                        android:layout_width="120dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/custom_round"
+                        android:text="Start Lesson"
+                        android:textAllCaps="false"
+                        android:layout_below="@id/textView2T3"
+                        android:layout_alignParentStart="true"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Non-Mutually Exclusive Events-->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:cardBackgroundColor="#f2d1e7"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="15dp">
+
+                    <TextView
+                        android:id="@+id/textView1T4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Non-Mutually Exclusive Events"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <ImageView
+                        android:id="@+id/imageViewT4"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_marginStart="15dp"
+                        android:src="@drawable/topic_4"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <TextView
+                        android:id="@+id/textView2T4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="115dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_below="@id/textView1T4"
+                        android:layout_alignParentStart="true"/>
+
+                    <Button
+                        android:id="@+id/topic4"
+                        android:layout_width="120dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/custom_round"
+                        android:text="Start Lesson"
+                        android:textAllCaps="false"
+                        android:layout_below="@id/textView2T4"
+                        android:layout_alignParentStart="true"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Independent Events-->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                app:cardBackgroundColor="#efe994"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="15dp">
+
+                    <TextView
+                        android:id="@+id/textView1T5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Independent Events"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <ImageView
+                        android:id="@+id/imageViewT5"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_marginStart="15dp"
+                        android:src="@drawable/topic_5"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <TextView
+                        android:id="@+id/textView2T5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="115dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_below="@id/textView1T5"
+                        android:layout_alignParentStart="true"/>
+
+                    <Button
+                        android:id="@+id/topic5"
+                        android:layout_width="120dp"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/custom_round"
+                        android:text="Start Lesson"
+                        android:textAllCaps="false"
+                        android:layout_below="@id/textView2T5"
+                        android:layout_alignParentStart="true"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Dependent Events-->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:cardBackgroundColor="#b8cff0"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="15dp">
+
+                    <TextView
+                        android:id="@+id/textView1T6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Dependent Events"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <ImageView
+                        android:id="@+id/imageViewT6"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_marginStart="15dp"
+                        android:src="@drawable/topic_6"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <TextView
+                        android:id="@+id/textView2T6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="115dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_below="@id/textView1T6"
+                        android:layout_alignParentStart="true"/>
+
+                    <Button
+                        android:id="@+id/topic6"
+                        android:layout_width="120dp"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/custom_round"
+                        android:text="Start Lesson"
+                        android:textAllCaps="false"
+                        android:layout_below="@id/textView2T6"
+                        android:layout_alignParentStart="true"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <View
+        android:id="@+id/maskView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/upper_corner"
-        android:paddingTop="20dp"
-        android:divider="@android:color/transparent"
-        android:listSelector="@android:color/transparent"/>
+        android:background="#80000000"
+        android:visibility="gone"/>
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/tutorialContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_anchor="@+id/scrollView1"
+        app:layout_anchorGravity="bottom|center">
+
+        <TextView
+            android:id="@+id/tutorialText"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/blackboard"
+            android:paddingVertical="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="140dp"
+            android:text="Hello there, and welcome to our PROBQUEST app!"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"/>
+
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                android:id="@+id/tutorialImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/teacher1"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:id="@+id/tutorialCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/round_cancel_24"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -65,11 +65,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:hint="Name"
+            android:hint="First Name"
             android:textColorHint="@color/gray_40">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textName"
+                android:id="@+id/textFName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/outline_person_outline_24"
+                android:drawablePadding="20dp"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/cardview_dark_background"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Last Name"
+            android:textColorHint="@color/gray_40">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textLName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/outline_person_outline_24"

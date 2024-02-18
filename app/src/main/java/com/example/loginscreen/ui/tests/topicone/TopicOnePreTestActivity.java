@@ -2,51 +2,87 @@ package com.example.loginscreen.ui.tests.topicone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.loginscreen.NavigationActivity;
 import com.example.loginscreen.R;
-import com.example.loginscreen.ui.tests.TestsDBHandler;
+import com.example.loginscreen.DBHandler;
 import com.example.loginscreen.ui.tests.TestsModelClass;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
+import java.util.Random;
+import java.util.Set;
 
 public class TopicOnePreTestActivity extends AppCompatActivity {
-    private Button topicOnePreTestBack,topicOnePreTestStart, topicOnePreTestOptA, topicOnePreTestOptB, topicOnePreTestOptC, topicOnePreTestOptD, topicOnePreTestNext, topicOnePreTestExit;
-    private LinearLayout topicOnePreTestInstruction, topicOnePreTest, topicOnePreTestScore;
-    private TextView topicOnePreTestItem, topicOnePreTestTimer, topicOnePreTestQuestion, topicOnePerTestScoreDisp, topicOnePerTestTimeDisp;
+    private Button topicOnePreTestBackCode, topicOnePreTestSend, topicOnePreTestBack,topicOnePreTestStart, topicOnePreTestOptA, topicOnePreTestOptB, topicOnePreTestOptC, topicOnePreTestOptD, topicOnePreTestNext, topicOnePreTestResult;
+    private LinearLayout topicOnePreTestEnterPasscode, topicOnePreTestInstruction, topicOnePreTest;
+    private TextView topicOnePreTestItem, topicOnePreTestTimer, topicOnePreTestQuestion, topicOnePreTestScoreDisp, topicOnePreTestTimeDisp, t1PreTestScore;
+    private EditText topicOnePreTestPasscode;
+    private ListView topicOnePreTestListView;
+    private RelativeLayout t1PreTestHeader, topicOnePreTestScore;
+    private ImageView t1PreTestExit;
     private ProgressBar topicOnePreTestProgress;
-    private int[] correctAnswerIndexes = {1,1,2,0,1,0,1,0,2,0};
-    private int currentQuestionIndex;
-    private int index;
-    private int totalQuestions;
-    private int score;
-    private static final long COUNTDOWN_IN_MILLIS = 16000;
+    private String answer, selectedAnswer, topicOnePreTestTotalScore, topicOnePreTestTotalTime;
+    private int currentQuestionIndex, score;
+    private List<String> testQuestions = new ArrayList<>();
+    private List<String> testSolutions = new ArrayList<>();
+    private List<String> testAnswers = new ArrayList<>();
+    private List<String> btn1 = new ArrayList<>();
+    private List<String> btn2 = new ArrayList<>();
+    private List<String> btn3 = new ArrayList<>();
+    private List<String> btn4 = new ArrayList<>();
+    private int[] btn1bg;
+    private int[] btn2bg;
+    private int[] btn3bg;
+    private int[] btn4bg;
+    private TopiOnePreTestQuestion question = new TopiOnePreTestQuestion();
+    private int questionLength = question.questions.length;
+    private Set<Integer> shownQuestionIndices = new HashSet<>();
+    Random random;
+    private Integer passcode;
+    private static final long COUNTDOWN_IN_MILLIS = 181000;
     private CountDownTimer countDownTimer;
-    private long timeLeftInMillis;
-    private long startTime;
-    private String topicOnePreTestTotalScore, topicOnePreTestTotalTime;
-    TestsDBHandler testsdbHandler;
+    private long timeLeftInMillis, startTime;
+    private boolean isTestOngoing = false;
+    private Boolean checkTestCode;
+    private Cursor cursor;
+    DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_one_pre_test);
 
-        testsdbHandler = new TestsDBHandler(this);
+        random = new Random();
 
+        dbHandler = new DBHandler(this);
+        // Enter Passcode Layout
+        topicOnePreTestEnterPasscode = findViewById(R.id.topicOnePreTestEnterPasscode);
+        topicOnePreTestPasscode = findViewById(R.id.topicOnePreTestPasscode);
+        topicOnePreTestBackCode = findViewById(R.id.topicOnePreTestBackCode);
+        topicOnePreTestSend = findViewById(R.id.topicOnePreTestSend);
+        // Direction Layout
         topicOnePreTestBack = findViewById(R.id.topicOnePreTestBack);
         topicOnePreTestStart = findViewById(R.id.topicOnePreTestStart);
         topicOnePreTestInstruction = findViewById(R.id.topicOnePreTestInstruction);
-
+        // Test Layout
         topicOnePreTest = findViewById(R.id.topicOnePreTest);
         topicOnePreTestItem = findViewById(R.id.topicOnePreTestItem);
         topicOnePreTestTimer = findViewById(R.id.topicOnePreTestTimer);
@@ -57,35 +93,108 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
         topicOnePreTestOptC = findViewById(R.id.topicOnePreTestOptC);
         topicOnePreTestOptD = findViewById(R.id.topicOnePreTestOptD);
         topicOnePreTestNext = findViewById(R.id.topicOnePreTestNext);
-
+        // Score Layout
         topicOnePreTestScore = findViewById(R.id.topicOnePreTestScore);
-        topicOnePerTestScoreDisp = findViewById(R.id.topicOnePerTestScoreDisp);
-        topicOnePerTestTimeDisp = findViewById(R.id.topicOnePerTestTimeDisp);
-        topicOnePreTestExit = findViewById(R.id.topicOnePreTestExit);
+        topicOnePreTestScoreDisp = findViewById(R.id.topicOnePerTestScoreDisp);
+        topicOnePreTestTimeDisp = findViewById(R.id.topicOnePerTestTimeDisp);
+        topicOnePreTestResult = findViewById(R.id.topicOnePreTestResult);
+        // Result
+        topicOnePreTestListView = findViewById(R.id.topicOnePreTestListView);
+        t1PreTestHeader = findViewById(R.id.t1PreTestHeader);
+        t1PreTestExit = findViewById(R.id.t1PreTestExit);
+        t1PreTestScore = findViewById(R.id.t1PreTestScore);
 
-        topicOnePreTestInstruction.setVisibility(View.VISIBLE);
-        topicOnePreTest.setVisibility(View.GONE);
-        topicOnePreTestScore.setVisibility(View.GONE);
+        ViewResultAdapter viewResultAdapter = new ViewResultAdapter(TopicOnePreTestActivity.this, testQuestions, btn1, btn2, btn3, btn4, testSolutions, testAnswers);
+        topicOnePreTestListView.setAdapter(viewResultAdapter);
+
+        checkTestCode = dbHandler.checkCode(4276);
+        if (checkTestCode == true) {
+            topicOnePreTestEnterPasscode.setVisibility(View.GONE);
+            topicOnePreTestScore.setVisibility(View.VISIBLE);
+
+            cursor = dbHandler.getScoreTime();
+            while (cursor.moveToNext()) {
+                int testType = cursor.getInt(0);
+                if (testType == 1) {
+                    topicOnePreTestScoreDisp.setText("Score: " + cursor.getString(2) + "/" + questionLength);
+                    topicOnePreTestTimeDisp.setText("Time: " + cursor.getString(3));
+                }
+            }
+            cursor.close();
+        } else {
+            topicOnePreTestEnterPasscode.setVisibility(View.VISIBLE);
+        }
+
+        topicOnePreTestBackCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        topicOnePreTestSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (topicOnePreTestPasscode.getText().toString().isEmpty()) {
+                    Toast.makeText(TopicOnePreTestActivity.this, "Require passcode", Toast.LENGTH_SHORT).show();
+                } else {
+                    passcode = Integer.valueOf(topicOnePreTestPasscode.getText().toString());
+                    checkTestCode = dbHandler.checkCode(passcode);
+
+                    if (checkTestCode == true) {
+                        Toast.makeText(TopicOnePreTestActivity.this, "You have already taken this test", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (passcode.equals(4276)) {
+                            topicOnePreTestEnterPasscode.setVisibility(View.GONE);
+                            topicOnePreTestInstruction.setVisibility(View.VISIBLE);
+                        } else if (passcode.equals(8080)) {                             // Free code
+                            topicOnePreTestEnterPasscode.setVisibility(View.GONE);
+                            topicOnePreTestInstruction.setVisibility(View.VISIBLE);
+                        } else {
+                            Toast.makeText(TopicOnePreTestActivity.this, "Incorrect passcode", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+        });
 
         topicOnePreTestBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
-                /**
-                 Intent intent = new Intent(TopicOnePreTestActivity.this, NavigationActivity.class);
-                 intent.putExtra("loadToTestsFragment", R.id.navigation_tests);
-                 startActivity(intent);
-                 finish();
-                 */
             }
         });
 
-        topicOnePreTestExit.setOnClickListener(new View.OnClickListener() {
+        topicOnePreTestResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Cursor cursor = testsdbHandler.getScoreTime();
-                //testsdbHandler.updateScore(new TestsModelClass(cursor.getInt(1), topicOnePreTestTotalScore, topicOnePreTestTotalTime));
-                onBackPressed();
+                topicOnePreTestScore.setVisibility(View.GONE);
+                topicOnePreTestListView.setVisibility(View.VISIBLE);
+                t1PreTestHeader.setVisibility(View.VISIBLE);
+                t1PreTestScore.setText("Score " + topicOnePreTestTotalScore + "/" + questionLength);
+                ((ViewResultAdapter) topicOnePreTestListView.getAdapter()).notifyDataSetChanged();
+
+                checkTestCode = dbHandler.checkCode(4276);
+                if (checkTestCode == true) {
+                    cursor = dbHandler.getScoreTime();
+                    while (cursor.moveToNext()) {
+                        int testType = cursor.getInt(0);
+                        if (testType == 1) {
+                            t1PreTestScore.setText("Score " + cursor.getString(2) + "/" + questionLength);
+                        }
+                    }
+                    cursor.close();
+                }
+            }
+        });
+
+        t1PreTestExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TopicOnePreTestActivity.this, NavigationActivity.class);
+                intent.putExtra("loadToTestsFragment", R.id.navigation_tests);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -94,34 +203,35 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
             public void onClick(View view) {
                 topicOnePreTestInstruction.setVisibility(View.GONE);
                 topicOnePreTest.setVisibility(View.VISIBLE);
-                topicOnePreTestScore.setVisibility(View.GONE);
 
-                currentQuestionIndex = 0;
-                index = 0;
-                totalQuestions = 5;
+                isTestOngoing = true;
+
                 score = 0;
+                currentQuestionIndex = 0;
 
-                topicOnePreTestProgress.setMax(totalQuestions);
+                topicOnePreTestProgress.setMax(questionLength);
                 topicOnePreTestProgress.setProgress(currentQuestionIndex + 1);
 
                 startTime = System.currentTimeMillis();
-                displayQuestion();
+                NextQuestion();
             }
         });
 
         topicOnePreTestNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int correctAnswerIndex = correctAnswerIndexes[currentQuestionIndex];
-                if (correctAnswerIndex == index) {
+                if (selectedAnswer.equals(answer)) {
+                    Toast.makeText(TopicOnePreTestActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     score++;
+                } else {
+                    Toast.makeText(TopicOnePreTestActivity.this, "Wrong", Toast.LENGTH_SHORT).show();
                 }
 
                 currentQuestionIndex++;
 
-                if (currentQuestionIndex < totalQuestions) {
+                if (currentQuestionIndex < questionLength) {
                     topicOnePreTestProgress.setProgress(currentQuestionIndex + 1);
-                    displayQuestion();
+                    NextQuestion();
                     resetButtonStyle();
                 } else {
                     countDownTimer.cancel();
@@ -133,7 +243,7 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
         topicOnePreTestOptA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                index = 0;
+                selectedAnswer = topicOnePreTestOptA.getText().toString();
                 topicOnePreTestNext.setVisibility(View.VISIBLE);
                 topicOnePreTestOptA.setBackgroundTintList(getResources().getColorStateList(R.color.blue));
                 topicOnePreTestOptA.setTextColor(getResources().getColor(R.color.white));
@@ -152,7 +262,7 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
         topicOnePreTestOptB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                index = 1;
+                selectedAnswer = topicOnePreTestOptB.getText().toString();
                 topicOnePreTestNext.setVisibility(View.VISIBLE);
                 topicOnePreTestOptB.setBackgroundTintList(getResources().getColorStateList(R.color.blue));
                 topicOnePreTestOptB.setTextColor(getResources().getColor(R.color.white));
@@ -171,7 +281,7 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
         topicOnePreTestOptC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                index = 2;
+                selectedAnswer = topicOnePreTestOptC.getText().toString();
                 topicOnePreTestNext.setVisibility(View.VISIBLE);
                 topicOnePreTestOptC.setBackgroundTintList(getResources().getColorStateList(R.color.blue));
                 topicOnePreTestOptC.setTextColor(getResources().getColor(R.color.white));
@@ -190,7 +300,7 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
         topicOnePreTestOptD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                index = 3;
+                selectedAnswer = topicOnePreTestOptD.getText().toString();
                 topicOnePreTestNext.setVisibility(View.VISIBLE);
                 topicOnePreTestOptD.setBackgroundTintList(getResources().getColorStateList(R.color.blue));
                 topicOnePreTestOptD.setTextColor(getResources().getColor(R.color.white));
@@ -207,43 +317,47 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
         });
     }
 
-    private void displayQuestion() {
-        String[] questions = getResources().getStringArray(R.array.topic_one_pre_test_questions);
-        topicOnePreTestQuestion.setText(questions[currentQuestionIndex]);
-        topicOnePreTestItem.setText((currentQuestionIndex + 1) + " of " + questions.length + " Questions");
+    @Override
+    public void onBackPressed() {
+        if (isTestOngoing) {
+            Toast.makeText(TopicOnePreTestActivity.this, "Can't go back. Test is ongoing.", Toast.LENGTH_SHORT).show();
+        } else {
+            super.onBackPressed();
+        }
+    }
 
-        String[][] answerArrays = new String[][] {
-                getResources().getStringArray(R.array.topic_one_pre_test_item1_options),
-                getResources().getStringArray(R.array.topic_one_pre_test_item2_options),
-                getResources().getStringArray(R.array.topic_one_pre_test_item3_options),
-                getResources().getStringArray(R.array.topic_one_pre_test_item4_options),
-                getResources().getStringArray(R.array.topic_one_pre_test_item5_options),
-        };
+    private void NextQuestion() {
+        int randomIndex;
+        do {
+            randomIndex = random.nextInt(questionLength);
+        } while (shownQuestionIndices.contains(randomIndex));
 
-        if (currentQuestionIndex < answerArrays.length) {
-            String[] currentAnswers = answerArrays[currentQuestionIndex];
+        shownQuestionIndices.add(randomIndex);
 
-            for (int i=0; i<4; i++) {
-                switch (i) {
-                    case 0:
-                        topicOnePreTestOptA.setText(currentAnswers[0]);
-                        break;
-                    case 1:
-                        topicOnePreTestOptB.setText(currentAnswers[1]);
-                        break;
-                    case 2:
-                        topicOnePreTestOptC.setText(currentAnswers[2]);
-                        break;
-                    case 3:
-                        topicOnePreTestOptD.setText(currentAnswers[3]);
-                        break;
-                }
-            }
+        if (shownQuestionIndices.size() == questionLength) {
+            shownQuestionIndices.clear();
         }
 
-        if ((currentQuestionIndex + 1) < questions.length) {
+        topicOnePreTestItem.setText((currentQuestionIndex + 1) + " of " + questionLength + " Questions");
+
+        topicOnePreTestQuestion.setText(question.getQuestion(randomIndex));
+        topicOnePreTestOptA.setText(question.getChoice1(randomIndex));
+        topicOnePreTestOptB.setText(question.getChoice2(randomIndex));
+        topicOnePreTestOptC.setText(question.getChoice3(randomIndex));
+        topicOnePreTestOptD.setText(question.getChoice4(randomIndex));
+        answer = question.getCorrectAnswer(randomIndex);
+
+        testQuestions.add(question.getQuestion(randomIndex));
+        btn1.add(question.getChoice1(randomIndex));
+        btn2.add(question.getChoice2(randomIndex));
+        btn3.add(question.getChoice3(randomIndex));
+        btn4.add(question.getChoice4(randomIndex));
+        testSolutions.add(question.getSolution(randomIndex));
+        testAnswers.add(question.getSolAnswer(randomIndex));
+
+        if ((currentQuestionIndex + 1) < questionLength) {
             topicOnePreTestNext.setText("Next");
-        } else if ((currentQuestionIndex + 1) == questions.length) {
+        } else if ((currentQuestionIndex + 1) == questionLength) {
             topicOnePreTestNext.setText("Submit");
         }
 
@@ -269,9 +383,9 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
 
                 currentQuestionIndex++;
 
-                if (currentQuestionIndex < totalQuestions) {
+                if (currentQuestionIndex < questionLength) {
                     topicOnePreTestProgress.setProgress(currentQuestionIndex + 1);
-                    displayQuestion();
+                    NextQuestion();
                     resetButtonStyle();
                 } else {
                     countDownTimer.cancel();
@@ -300,12 +414,13 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
     }
 
     private void showScore() {
-        topicOnePreTestInstruction.setVisibility(View.GONE);
         topicOnePreTest.setVisibility(View.GONE);
         topicOnePreTestScore.setVisibility(View.VISIBLE);
 
+        isTestOngoing = false;
+
         topicOnePreTestTotalScore = String.valueOf(score);
-        topicOnePerTestScoreDisp.setText("Total score: " + topicOnePreTestTotalScore + " / " + totalQuestions);
+        topicOnePreTestScoreDisp.setText("Score: " + topicOnePreTestTotalScore + "/" + questionLength);
 
         long endTime = System.currentTimeMillis();
         long timeDiff = endTime - startTime;
@@ -315,9 +430,9 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
         int min = (totalSeconds % 3600) / 60;
         int secs = totalSeconds % 60;
         topicOnePreTestTotalTime = String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, min, secs);
-        topicOnePerTestTimeDisp.setText("Total time: " + topicOnePreTestTotalTime);
+        topicOnePreTestTimeDisp.setText("Time: " + topicOnePreTestTotalTime);
 
-        testsdbHandler.storeTestScore(new TestsModelClass(1, topicOnePreTestTotalScore, topicOnePreTestTotalTime));
+        dbHandler.storeTestScore(new TestsModelClass(1, 4276, topicOnePreTestTotalScore, topicOnePreTestTotalTime));
     }
 
     private void resetButtonStyle() {

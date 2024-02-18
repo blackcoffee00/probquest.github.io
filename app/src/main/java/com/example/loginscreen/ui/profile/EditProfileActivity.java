@@ -20,18 +20,18 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.loginscreen.DBHandler;
+import com.example.loginscreen.NavigationActivity;
 import com.example.loginscreen.R;
 
 import java.io.IOException;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    private EditText textName, textSection;
-    private ImageView userImage, arrowBackButton;
+    private EditText textFName, textLName, textSection;
+    private ImageView userImage;
+    private ImageView arrowBackButton;
     private RelativeLayout uploadImage;
     private Button saveButton;
     private Uri uri;
@@ -45,21 +45,23 @@ public class EditProfileActivity extends AppCompatActivity {
 
         dbHandler = new DBHandler(this);
 
-        textName = findViewById(R.id.textName);
+        textFName = findViewById(R.id.textFName);
+        textLName = findViewById(R.id.textLName);
         textSection = findViewById(R.id.textSection);
         userImage = findViewById(R.id.userImage);
         uploadImage = findViewById(R.id.uploadImage);
         arrowBackButton = findViewById(R.id.arrowBackButton);
         saveButton = findViewById(R.id.saveButton);
 
-        Cursor cursor = dbHandler.getUser();
+        Cursor cursor = dbHandler.getUser(1);
 
-        if (cursor.getCount() == 0) {
-        } else {
-            while (cursor.moveToNext()) {
-                textName.setText("" + cursor.getString(0));
-                textSection.setText("" + cursor.getString(1));
-            }
+        while (cursor.moveToNext()) {
+            textFName.setText("" + cursor.getString(1));
+            textLName.setText("" + cursor.getString(2));
+            textSection.setText("" + cursor.getString(3));
+            byte[] imageByte = cursor.getBlob(4);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+            userImage.setImageBitmap(bitmap);
         }
 
         arrowBackButton.setOnClickListener(new View.OnClickListener() {
@@ -112,15 +114,35 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void storeImage() {
-        if (!textName.getText().toString().isEmpty() &&
+        if (!textFName.getText().toString().isEmpty() &&
                 !textSection.getText().toString().isEmpty() &&
                 userImage.getDrawable() != null && bitmapImage !=null) {
 
-            dbHandler.storeData(new ProfileModelClass(textName.getText().toString(), textSection.getText()
-                    .toString(), bitmapImage));
+            Boolean checkId = dbHandler.checkId(1);
+            if (checkId == true) {
+                String fname = textFName.getText().toString();
+                String lname = textLName.getText().toString();
+                String section = textSection.getText().toString();
+                Bitmap image = bitmapImage;
 
-            Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
-            onBackPressed();
+                Boolean updateProfile = dbHandler.updateProfile(new ProfileModelClass(1, fname, lname, section, image));
+
+                if (updateProfile == true) {
+                    Toast.makeText(EditProfileActivity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(EditProfileActivity.this, "Profile is not updated", Toast.LENGTH_SHORT).show();
+                }
+
+            } else {
+                dbHandler.storeData(new ProfileModelClass(1, textFName.getText().toString(), textLName.getText().toString(), textSection.getText().toString(), bitmapImage));
+                Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+            }
+
+            Intent intent = new Intent(EditProfileActivity.this, NavigationActivity.class);
+            intent.putExtra("loadToProfileFragment", R.id.navigation_profile);
+            startActivity(intent);
+            finish();
+
         } else {
             Toast.makeText(EditProfileActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
         }

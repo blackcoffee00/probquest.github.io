@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp">
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/topicFourBack"
@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Dependent and Independent Events"
+            android:text="Non-Mutually Exclusive Events"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -37,8 +37,45 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/upper_corner"
-        android:paddingTop="20dp"
-        android:paddingHorizontal="10dp">
+        android:paddingTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/custom_edit_passcode">
+
+                <TextView
+                    android:id="@+id/t4TextViewTitle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/round_lightbulb_circle_24"
+                    android:drawablePadding="4dp"
+                    android:text="Objectives"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"/>
+
+                <TextView
+                    android:id="@+id/t4TextView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="In this lesson we will learn how to find the probability of non - mutually exclusive events."
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </ScrollView>
 

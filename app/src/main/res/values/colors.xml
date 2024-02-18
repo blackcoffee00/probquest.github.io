@@ -10,9 +10,17 @@
     <color name="purple">#8692f7</color>
     <color name="blue">#386caf</color>
     <color name="light_gray">#d2d2d2</color>
+    <color name="bright_gray">#e8e9eb</color>
     <color name="gray_40">#666666</color>
     <color name="smoke">#f5f5f5</color>
     <color name="tea_green">#d0f0c0</color>
     <color name="sea_green">#2e8b57</color>
     <color name="light_blue">#b0d6f5</color>
+    <color name="pink">#ff8986</color>
+    <color name="sky_blue">#d0eefa</color>
+    <color name="light_pink">#ffdefb</color>
+    <color name="yellow">#ffe1ac</color>
+    <color name="green">#d6f2b9</color>
+    <color name="correct">#5DAC07</color>
+    <color name="wrong">#CE2323</color>
 </resources>

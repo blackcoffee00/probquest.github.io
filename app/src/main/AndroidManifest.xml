@@ -14,7 +14,25 @@
         android:theme="@style/Theme.LoginScreen"
         tools:targetApi="31">
         <activity
-            android:name=".ProbabilityFairActivity"
+            android:name=".TopicSixActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.games.puzzles.EasyPuzzleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.games.ColorRouletteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.games.HighLowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.games.RollDiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.games.ActivitiesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.games.puzzles.PuzzlesActivity"
             android:exported="false" />
         <activity
             android:name=".ui.profile.EditProfileActivity"

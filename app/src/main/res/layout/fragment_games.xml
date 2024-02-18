@@ -1,39 +1,351 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="@color/white"
     tools:context=".ui.games.GamesFragment">
 
     <LinearLayout
-        android:id="@+id/enterProbabilityFair"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="350dp"
-            android:layout_height="350dp"
-            android:src="@drawable/circus" />
-
-        <Button
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/custom_button"
-            android:backgroundTint="#F1CF57"
-            android:padding="20dp"
-            android:text="Enter Probability Fair"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:padding="15dp"
+            android:text="Welcome to\nProbability Games!"
+            android:textColor="@color/blue"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            app:cardBackgroundColor="#cee1ff"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="15dp">
+
+                <TextView
+                    android:id="@+id/textView1Game1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="115dp"
+                    android:text="Activities"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"/>
+
+                <ImageView
+                    android:id="@+id/imageViewGame1"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/activities"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/textView2Game1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="115dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="sksj iewbvjewyft chgvjh vjhvbjhbh bhbkbg ud rklj gjvj ibcoqan"
+                    android:layout_below="@id/textView1Game1"
+                    android:layout_alignParentStart="true"/>
+
+                <Button
+                    android:id="@+id/gameActivities"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="115dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/custom_round"
+                    android:text="Play"
+                    android:textAllCaps="false"
+                    android:layout_below="@id/textView2Game1"
+                    android:layout_alignParentStart="true"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            app:cardBackgroundColor="#e3f1ba"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="15dp">
+
+                <TextView
+                    android:id="@+id/textView1Game2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="115dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Puzzles"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"/>
+
+                <ImageView
+                    android:id="@+id/imageViewGame2"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/puzzles"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:id="@+id/textView2Game2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="115dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="sksj iewbvjewyft chgvjh vjhvbjhbh bhbkbg ud rklj gjvj ibcoqan"
+                    android:layout_below="@id/textView1Game2"
+                    android:layout_alignParentStart="true"/>
+
+                <Button
+                    android:id="@+id/gamePuzzles"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="115dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/custom_round"
+                    android:text="Play"
+                    android:textAllCaps="false"
+                    android:layout_below="@id/textView2Game2"
+                    android:layout_alignParentStart="true"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            app:cardBackgroundColor="#f2d1e7"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="15dp">
+
+                <TextView
+                    android:id="@+id/textView1Game3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="115dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Roll Dice"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"/>
+
+                <ImageView
+                    android:id="@+id/imageViewGame3"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/roll_dice"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:id="@+id/textView2Game3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="115dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="sksj iewbvjewyft chgvjh vjhvbjhbh bhbkbg ud rklj gjvj ibcoqan"
+                    android:layout_below="@id/textView1Game3"
+                    android:layout_alignParentStart="true"/>
+
+                <Button
+                    android:id="@+id/gameRollDice"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="115dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/custom_round"
+                    android:text="Play"
+                    android:textAllCaps="false"
+                    android:layout_below="@id/textView2Game3"
+                    android:layout_alignParentStart="true"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            app:cardBackgroundColor="#efe994"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="15dp">
+
+                <TextView
+                    android:id="@+id/textView1Game4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="115dp"
+                    android:layout_marginTop="15dp"
+                    android:text="High Low"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"/>
+
+                <ImageView
+                    android:id="@+id/imageViewGame4"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/high_low"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:id="@+id/textView2Game4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="115dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="sksj iewbvjewyft chgvjh vjhvbjhbh bhbkbg ud rklj gjvj ibcoqan"
+                    android:layout_below="@id/textView1Game4"
+                    android:layout_alignParentStart="true"/>
+
+                <Button
+                    android:id="@+id/gameHighLow"
+                    android:layout_width="100dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="115dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/custom_round"
+                    android:text="Play"
+                    android:textAllCaps="false"
+                    android:layout_below="@id/textView2Game4"
+                    android:layout_alignParentStart="true"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            app:cardBackgroundColor="#b8cff0"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="15dp">
+
+                <TextView
+                    android:id="@+id/textView1Game5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="115dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Color Roulette"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"/>
+
+                <ImageView
+                    android:id="@+id/imageViewGame5"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/color_roulette"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:id="@+id/textView2Game5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="115dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="sksj iewbvjewyft chgvjh vjhvbjhbh bhbkbg ud rklj gjvj ibcoqan"
+                    android:layout_below="@id/textView1Game5"
+                    android:layout_alignParentStart="true"/>
+
+                <Button
+                    android:id="@+id/gameColorRoulette"
+                    android:layout_width="100dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="115dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/custom_round"
+                    android:text="Play"
+                    android:textAllCaps="false"
+                    android:layout_below="@id/textView2Game5"
+                    android:layout_alignParentStart="true"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

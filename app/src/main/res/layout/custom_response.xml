@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="320dp"
+        android:layout_centerInParent="true"
+        android:background="@color/white">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/responseImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            app:lottie_rawRes="@raw/happy_emoji"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+
+        <TextView
+            android:id="@+id/responseText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/responseImage"
+            android:layout_above="@+id/tryAgainButton"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="CORRECT!"
+            android:textColor="#5DAC07"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/tryAgainButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_above="@+id/nextButton"
+            android:layout_marginBottom="6dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/custom_round"
+            android:backgroundTint="#CE2323"
+            android:text="Try Again"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_above="@+id/exitButton"
+            android:layout_marginBottom="6dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/custom_round"
+            android:backgroundTint="#5DAC07"
+            android:text="Next"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/exitButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/custom_round"
+            android:backgroundTint="@color/black"
+            android:text="Exit"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

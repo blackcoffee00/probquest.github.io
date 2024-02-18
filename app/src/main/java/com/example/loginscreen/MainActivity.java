@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static int SPLASH_TIMER = 3000;
+    public static int SPLASH_TIMER = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
