@@ -35,22 +35,22 @@ public class TopiOnePreTestQuestion {
             "Event = drawing a red queen\nThere are two red queen in a deck of cards, that is, a queen of diamonds and a queen of hearts. Thus,\nn(E) = 2\nSample space =\n{Diamonds: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King},\n{Hearts: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King},\n{Clubs: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King},\n{Spade: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King}\nn(S) = 52",
             "Event = drawing a green ball\nThere are six green balls. Thus,\nn(E) = 6\nSample space = {five red balls, four white balls, and six green balls}\nn(S) = 15",
             "Event = spinning odd number\nThere are eight odd numbers in a spinner such as 1, 3, 5, 7, 9, 11, 13, and 15. Thus,\nn(E) = 8\nSample space = {five red balls, four white balls, and six green balls}\nn(S) = 15",
-            "Event = spinning odd number\nThere are six green balls, thus\nn(E) = 6\nSample space = {five red balls, four white balls, six green balls}\nn(S) = 15",
-            "",
-            "",
-            ""
+            "Event = landing on a number less than 4\nThere are three numbers less than four, thus\nn(E) = 3\nSample space = {five red balls, four white balls, six green balls}\nn(S) = 15",
+            "Event = selecting a vowel from the word ENRICHMENT\nThere are three vowels, thus\nn(E) = 3\nSample space = {E, N, R, I, C, H, M, E, N, T}\nn(S) = 10",
+            "Event = drawing a ball numbered divisible by 3\nThere are ten balls, thus\nn(E) = 10\nSample space = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30}\nn(S) = 30",
+            "Event = the ball landing on a red number\nThere are ten red numbers, thus\nn(E) = 10\nSample space = {10(red), 8(black), 12(green)}\nn(S) = 30"
     };
     public String solAnswers[] = {
             "\\text{Probability of Event } = \\frac{\\text{number of event}}{\\text{number of sample spcae}}\\\\P(E) = \\frac{n(\\text{event})}{n(\\text{sample space})} = \\frac{1}{6}",
             "\\text{Probability of Event } = \\frac{\\text{number of event}}{\\text{number of sample spcae}}\\\\P(E) = \\frac{n(\\text{event})}{n(\\text{sample space})} = \\frac{1}{2}",
             "\\text{Probability of Event } = \\frac{\\text{number of event}}{\\text{number of sample spcae}}\\\\P(E) = \\frac{n(\\text{event})}{n(\\text{sample space})} = \\frac{1}{52}",
-            "\\text{Probability of Event } = \\frac{\\text{number of event}}{\\text{number of sample spcae}}\\\\P(E) = \\frac{n(\\text{event})}{n(\\text{sample space})} = \\frac{1}{2}",
+            "\\text{Probability of Event } = \\frac{\\text{number of event}}{\\text{number of sample spcae}}\\\\P(E) = \\frac{n(\\text{event})}{n(\\text{sample space})} = \\frac{1}{26}",
             "\\text{Probability of Event } = \\frac{\\text{number of event}}{\\text{number of sample spcae}}\\\\P(E) = \\frac{n(\\text{event})}{n(\\text{sample space})} = \\frac{6}{15} = \\frac{2}{5}",
             "\\text{Probability of Event } = \\frac{\\text{number of event}}{\\text{number of sample spcae}}\\\\P(E) = \\frac{n(\\text{event})}{n(\\text{sample space})} = \\frac{8}{15}",
-            "\\text{Probability of Event } = \\frac{\\text{number of event}}{\\text{number of sample spcae}}\\\\P(E) = \\frac{n(\\text{event})}{n(\\text{sample space})} = \\frac{6}{15} = \\frac{2}{5}",
-            "",
-            "",
-            ""
+            "\\text{Probability of Event } = \\frac{\\text{number of event}}{\\text{number of sample spcae}}\\\\P(E) = \\frac{n(\\text{event})}{n(\\text{sample space})} = \\frac{3}{15} = \\frac{1}{5}",
+            "\\text{Probability of Event } = \\frac{\\text{number of event}}{\\text{number of sample spcae}}\\\\P(E) = \\frac{n(\\text{event})}{n(\\text{sample space})} = \\frac{3}{10}",
+            "\\text{Probability of Event } = \\frac{\\text{number of event}}{\\text{number of sample spcae}}\\\\P(E) = \\frac{n(\\text{event})}{n(\\text{sample space})} = \\frac{10}{30} = \\frac{1}{3}",
+            "\\text{Probability of Event } = \\frac{\\text{number of event}}{\\text{number of sample spcae}}\\\\P(E) = \\frac{n(\\text{event})}{n(\\text{sample space})} = \\frac{10}{30} = \\frac{1}{3}"
     };
     public String getQuestion(int a) {
         String question = questions[a];

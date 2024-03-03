@@ -1,29 +1,19 @@
 package com.example.loginscreen.ui.tests;
 
 public class TestsModelClass {
-    private Integer id, testCode;
+    private Integer testCode;
     private String score, time;
 
     public TestsModelClass(String score, String time) {
-        this.id = id;
         this.testCode = testCode;
         this.score = score;
         this.time = time;
     }
 
-    public TestsModelClass(Integer id, Integer testCode, String score, String time) {
-        this.id = id;
+    public TestsModelClass(Integer testCode, String score, String time) {
         this.testCode = testCode;
         this.score = score;
         this.time = time;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Integer getTestCode() {

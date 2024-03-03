@@ -24,9 +24,17 @@
     </string>
 
     <string name="color_roulette_mechanics">
-        1. There\'s a roulette wheel with 16 slots, each colored red, blue, green, or yellow. The number of slots for each color is different.\n
-        \n2. The player chooses one of the four options, each representing colored red, blue, green, or yellow.\n
-        \n3. The player then spins the wheel, and if it lands on one of the specified colors from their chosen option, they win the round and earn points.
+        1. The roulette wheel consists of 16 slots, each colored as red, blue, green, or yellow. The distribution of colors across the wheel is uneven.\n
+        \n2. The player makes a prediction by choosing one of the four options: red, blue, green, or yellow.\n
+        \n3. Upon spinning the wheel, if it lands on the color predicted by the player, they win the round and earn points. Conversely, if the outcome differs from their prediction, points are deducted.
+    </string>
+
+    <string name="puzzle_mechanics">
+        1. Each level(easy, medium, hard) consists of 10 probability puzzles.\n
+        \n2. Players have 1 minute and 30 seconds (1:30) to write and submit their answer for each puzzle.\n
+        \n3. Upon submission, the system immediately evaluates the answer for correctness. Correct answers earn points, while incorrect answers result in no points awarded.\n
+        \n4. If the player fails to submit their answer within the time limit or provides an incorrect response, they are given the option to retry the puzzle.\n
+        \n5. After completing all 10 puzzles in a level, the player\'s total score is calculated and displayed. Players have the option to retry the game.
     </string>
 
     <string-array name="topic_titles">
@@ -39,7 +47,7 @@
     <string name="direction">
         Read and understand each question carefully and select your answer from the multiple-choice options.\n
         \nChoose only one answer per question and click next to proceed to the next item.\n
-        \nYou have a 60 seconds time limit per question.\n
+        \nYou have a 1 minute ans 30 seconds time limit per question.\n
         \nYour score will display after answering all 10 questions. Good luck!
     </string>
 

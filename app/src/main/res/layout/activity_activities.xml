@@ -1,9 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B3D1FF"
     tools:context=".ui.games.ActivitiesActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:id="@+id/activityExit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/baseline_arrow_back_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Activities"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="26sp"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Probability Bingo"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="@color/blue"/>
+
+        <ImageView
+            android:id="@+id/probBingoImg"
+            android:layout_width="wrap_content"
+            android:layout_height="450dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/probability_bingo" />
+
+        <Button
+            android:id="@+id/probBingoBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:paddingHorizontal="40dp"
+            android:background="@drawable/custom_selected_button"
+            android:text="Convert to PDF"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Coin Flip Investigation"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="@color/blue"/>
+
+        <ImageView
+            android:id="@+id/coinTossImg1"
+            android:layout_width="wrap_content"
+            android:layout_height="500dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/coin_toss_investigation1"/>
+
+        <ImageView
+            android:id="@+id/coinTossImg2"
+            android:layout_width="wrap_content"
+            android:layout_height="500dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/coin_toss_investigation2"/>
+
+        <Button
+            android:id="@+id/coinTossBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:paddingHorizontal="40dp"
+            android:background="@drawable/custom_selected_button"
+            android:text="Convert to PDF"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Dice Roll Investigation"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="@color/blue"/>
+
+        <ImageView
+            android:id="@+id/diceRollImg1"
+            android:layout_width="wrap_content"
+            android:layout_height="500dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/dice_roll_investigation1"/>
+
+        <ImageView
+            android:id="@+id/diceRollImg2"
+            android:layout_width="wrap_content"
+            android:layout_height="500dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/dice_roll_investigation2"/>
+
+        <Button
+            android:id="@+id/diceRollBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:paddingHorizontal="40dp"
+            android:background="@drawable/custom_selected_button"
+            android:text="Convert to PDF"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Paper-Scissors-Rock Game Probability Investigation"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="@color/blue"/>
+
+        <ImageView
+            android:id="@+id/psrImg1"
+            android:layout_width="wrap_content"
+            android:layout_height="500dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/paper_scissors_rock1"/>
+
+        <ImageView
+            android:id="@+id/psrImg2"
+            android:layout_width="wrap_content"
+            android:layout_height="500dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/paper_scissors_rock2"/>
+
+        <Button
+            android:id="@+id/psrBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:paddingHorizontal="40dp"
+            android:background="@drawable/custom_selected_button"
+            android:text="Convert to PDF"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</ScrollView>

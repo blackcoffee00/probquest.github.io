@@ -15,7 +15,7 @@ public class HardProblems {
     };
 
     public String imageName[] = {
-            "", "", "", "", "", "", "deck_of_cards", "", "", ""
+            "spinner", "marbles_3", "balls", "roses", "basket", "roll_a_die", "deck_of_cards", "box", "pens_pencils", "deck_of_cards"
     };
 
     public String correctAnswer[] = {

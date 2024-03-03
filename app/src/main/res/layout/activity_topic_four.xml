@@ -33,50 +33,434 @@
 
     </RelativeLayout>
 
-    <ScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/upper_corner"
-        android:paddingTop="20dp">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/t4ScrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:background="@drawable/upper_corner"
+            android:paddingTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="vertical"
-                android:background="@drawable/custom_edit_passcode">
+                android:layout_marginHorizontal="15dp"
+                android:paddingBottom="50dp"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/t4TextViewTitle1"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/round_lightbulb_circle_24"
-                    android:drawablePadding="4dp"
-                    android:text="Objectives"
+                    android:padding="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/custom_edit_passcode">
+
+                    <TextView
+                        android:id="@+id/t4TextViewTitle1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/round_lightbulb_circle_24"
+                        android:drawablePadding="4dp"
+                        android:text="Objectives"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:id="@+id/t4TextView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:text="In this lesson we will learn how to find the probability of non-mutually exclusive events."
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:layout_gravity="center"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:text="Click on the video to start watching a lecture on the probability of non-mutually exclusive events"/>
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        app:lottie_rawRes="@raw/pointing_down"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"/>
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <VideoView
+                        android:id="@+id/t4Video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="220dp"
+                        android:layout_gravity="center"/>
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:textStyle="italic"
+                    android:text="Video Source: https://youtu.be/UKuCyADXAlg?si=3xXizE_JR5ssnsaq5"/>
+
+                <TextView
+                    android:id="@+id/t4TextViewTitle2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Introduction to lesson"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/blue"/>
 
                 <TextView
-                    android:id="@+id/t4TextView1"
+                    android:id="@+id/t4TextView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:text="In this lesson we will learn how to find the probability of non - mutually exclusive events."
+                    android:layout_marginBottom="10dp"
+                    android:text="What is Non-Mutually Exclusive Event?"
+                    android:textSize="16sp"
+                    android:textStyle="italic|bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t4TextView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
 
+                <TextView
+                    android:id="@+id/t4TextView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Consider the set A as all numbers from 10 to 20, and the set B as all multiples of 3 from 1 to 20:"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t4TextView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t4TextView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t4TextView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Other examples of non-mutually exclusive events are the following:"
+                    android:textStyle="italic"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t4TextView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="20dp"
+                    android:text="1. rolling a pair of dice showing doubles or a sum of 12\n2. drawing a face card or a jack of clubs from an ordinary deck of cards\n3. rolling an even number or a prime number\n4. spinning a 6 or an even number on a roulette with numbers from 1- 10.\n5. drawing a red card or a diamond from an ordinary deck of cards."
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t4TextView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="How to calculate the probability of non-mutually exclusive events?"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t4TextView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <ru.noties.jlatexmath.JLatexMathView
+                    android:id="@+id/t4Latex_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:jlmv_alignHorizontal="center"
+                    app:jlmv_textSize="16sp"
+                    app:jlmv_textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t4TextView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Let us visualize the non-mutually exclusive events using Venn Diagram. Observe that the circles representing each have an overlap."
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/nonmutually" />
+
+                <TextView
+                    android:id="@+id/t4TextViewTitle3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Illustrative Examples"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"/>
+
+                <TextView
+                    android:id="@+id/t4TextView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="1. What is the probability of a die showing a number 3 or an odd number?"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/dice_set"/>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:columnCount="2"
+                    android:rowCount="4">
+
+                    <TextView
+                        android:id="@+id/t4TextView13"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Given:"
+                        android:textSize="16sp"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t4TextView14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="3"
+                        android:text="Let P(A) is the probability of getting a number 3, P(B) is the probability of getting an odd number, and P(A and B) is the probability of a number 3 and an odd number\nA die has 6 faces numbered 1, 2, 3, 4, 5, and 6. There exist one (1) number 3, three (3) odd numbers and one (1) number which is both 3 and as odd number.\nThus,"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <ru.noties.jlatexmath.JLatexMathView
+                        android:id="@+id/t4Latex_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="3"
+                        app:jlmv_textSize="16sp"
+                        app:jlmv_textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t4TextView15"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Solution:"
+                        android:textSize="16sp"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"/>
+
+                    <ru.noties.jlatexmath.JLatexMathView
+                        android:id="@+id/t4Latex_3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="3"
+                        app:jlmv_textSize="16sp"
+                        app:jlmv_textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t4TextView16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Answer:"
+                        android:textSize="16sp"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t4TextView17"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="3"
+                        android:text="The probability of die showing a number 3 or odd number is 1/2."
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                </GridLayout>
+
+                <TextView
+                    android:id="@+id/t4TextView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="2. A card is drawn at random from a well-shuffled deck of 52 cards. Find the probability that the card drawn is a red or a face card?"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/deck_of_cards"/>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:columnCount="2"
+                    android:rowCount="4">
+
+                    <TextView
+                        android:id="@+id/t4TextView19"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Given:"
+                        android:textSize="16sp"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t4TextView20"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="3"
+                        android:text="Let P(A) is the probability of drawing a red, P(B) is the probability of drawing a face card, and P( A and B) is the probability of drawing a red or a face card\nIn a standard deck of 52 cards, there exists 26 red cards, 12 face cards. Also, there are 6 cards which is both red card and face card and these are jack, queen and king of diamonds and jack, queen and king of hearts.\nThus,"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <ru.noties.jlatexmath.JLatexMathView
+                        android:id="@+id/t4Latex_4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="3"
+                        app:jlmv_textSize="16sp"
+                        app:jlmv_textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t4TextView21"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Solution:"
+                        android:textSize="16sp"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"/>
+
+                    <ru.noties.jlatexmath.JLatexMathView
+                        android:id="@+id/t4Latex_5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="3"
+                        app:jlmv_textSize="16sp"
+                        app:jlmv_textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t4TextView22"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Answer:"
+                        android:textSize="16sp"
+                        android:textStyle="italic"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t4TextView23"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="3"
+                        android:text="The probability of drawing a red card or a face card is 8/13."
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                </GridLayout>
+
             </LinearLayout>
 
-        </LinearLayout>
+        </ScrollView>
 
-    </ScrollView>
+        <ZoomControls
+            android:id="@+id/t4ZoomControls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_anchor="@+id/t4ScrollView"
+            app:layout_anchorGravity="bottom|center"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>

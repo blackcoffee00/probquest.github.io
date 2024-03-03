@@ -1,21 +1,25 @@
 package com.example.loginscreen.ui.study;
 
+import static com.example.loginscreen.DBHandler.TIME_IN_SEC;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 import android.widget.ZoomControls;
 
+import com.example.loginscreen.DBHandler;
 import com.example.loginscreen.R;
 
 import java.util.Locale;
+import java.util.Map;
 
 import ru.noties.jlatexmath.JLatexMathDrawable;
 import ru.noties.jlatexmath.JLatexMathView;
@@ -25,13 +29,17 @@ public class TopicOneActivity extends AppCompatActivity {
     private ImageView topicOneBack;
     private TextView t1TextViewTitle1, t1TextViewTitle2, t1TextViewTitle3, t1TextView1, t1TextView2, t1TextView3, t1TextView4, t1TextView5, t1TextView6, t1TextView7, t1TextView8, t1TextView9, t1TextView10, t1TextView11, t1TextView12, t1TextView13, t1TextView14, t1TextView15, t1TextView16, t1TextView17, t1TextView18, t1TextView19;
     private JLatexMathView t1Latex_1, t1Latex_2, t1Latex_3, t1Latex_4, t1Latex_5;
+    private VideoView t1Video;
     private ZoomControls t1ZoomControls;
-    private long startTime1, endTime1;
     private int textSize = 16;
+    private long startTime1, endTime1;
+    DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_one);
+
+        dbHandler = new DBHandler(this);
 
         topicOneBack = findViewById(R.id.topicOneBack);
         t1TextViewTitle1 = findViewById(R.id.t1TextViewTitle1);
@@ -61,7 +69,7 @@ public class TopicOneActivity extends AppCompatActivity {
         t1Latex_3 = findViewById(R.id.t1Latex_3);
         t1Latex_4 = findViewById(R.id.t1Latex_4);
         t1ZoomControls = findViewById(R.id.t1ZoomControls);
-        VideoView t1Video = findViewById(R.id.t1Video);
+        t1Video = findViewById(R.id.t1Video);
 
         startTime1 = System.currentTimeMillis();
 
@@ -77,9 +85,9 @@ public class TopicOneActivity extends AppCompatActivity {
         t1Latex_3.setLatexDrawable(JLatexMathDrawable.builder("P(E) = \\frac{n(E)}{n(S)}").textSize(50).background(0xFFffffff).padding(8).align(JLatexMathDrawable.ALIGN_CENTER).build());
         t1Latex_4.setLatexDrawable(JLatexMathDrawable.builder("n(E) = 12").textSize(50).background(0xFFffffff).padding(8).align(JLatexMathDrawable.ALIGN_CENTER).build());
 
-        t1Video.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.probability_of_simple_events);
+        t1Video.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.simple_events);
         MediaController mediaController = new MediaController(TopicOneActivity.this);
-        mediaController.setAnchorView((ViewGroup) t1Video.getParent());
+        mediaController.setAnchorView(t1Video);
         t1Video.setMediaController(mediaController);
 
         topicOneBack.setOnClickListener(new View.OnClickListener() {
@@ -89,57 +97,28 @@ public class TopicOneActivity extends AppCompatActivity {
             }
         });
 
+        TextView[] textViewTitle = new TextView[]{t1TextViewTitle1, t1TextViewTitle2, t1TextViewTitle3};
+        TextView[] textView = new TextView[]{t1TextView1, t1TextView2, t1TextView3, t1TextView4, t1TextView5, t1TextView6, t1TextView7, t1TextView8, t1TextView9, t1TextView10, t1TextView11, t1TextView12, t1TextView13, t1TextView14, t1TextView15, t1TextView16, t1TextView17, t1TextView18, t1TextView19};
+
         t1ZoomControls.setOnZoomInClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (textSize == 16) {
                     textSize = textSize + 2;
-                    t1TextView1.setTextSize(textSize);
-                    t1TextView2.setTextSize(textSize);
-                    t1TextView3.setTextSize(textSize);
-                    t1TextView4.setTextSize(textSize);
-                    t1TextView5.setTextSize(textSize);
-                    t1TextView6.setTextSize(textSize);
-                    t1TextView7.setTextSize(textSize);
-                    t1TextView8.setTextSize(textSize);
-                    t1TextView9.setTextSize(textSize);
-                    t1TextView10.setTextSize(textSize);
-                    t1TextView11.setTextSize(textSize);
-                    t1TextView12.setTextSize(textSize);
-                    t1TextView13.setTextSize(textSize);
-                    t1TextView14.setTextSize(textSize);
-                    t1TextView15.setTextSize(textSize);
-                    t1TextView16.setTextSize(textSize);
-                    t1TextView17.setTextSize(textSize);
-                    t1TextView18.setTextSize(textSize);
-                    t1TextView19.setTextSize(textSize);
-                    t1TextViewTitle1.setTextSize(20);
-                    t1TextViewTitle2.setTextSize(20);
-                    t1TextViewTitle3.setTextSize(20);
+                    for (int i = 0; i < textView.length; i++) {
+                        textView[i].setTextSize(textSize);
+                    }
+                    for (int i = 0; i < textViewTitle.length; i++) {
+                        textViewTitle[i].setTextSize(20);
+                    }
                 } else if (textSize == 18) {
                     textSize = textSize + 2;
-                    t1TextView1.setTextSize(textSize);
-                    t1TextView2.setTextSize(textSize);
-                    t1TextView3.setTextSize(textSize);
-                    t1TextView4.setTextSize(textSize);
-                    t1TextView5.setTextSize(textSize);
-                    t1TextView6.setTextSize(textSize);
-                    t1TextView7.setTextSize(textSize);
-                    t1TextView8.setTextSize(textSize);
-                    t1TextView9.setTextSize(textSize);
-                    t1TextView10.setTextSize(textSize);
-                    t1TextView11.setTextSize(textSize);
-                    t1TextView12.setTextSize(textSize);
-                    t1TextView13.setTextSize(textSize);
-                    t1TextView14.setTextSize(textSize);
-                    t1TextView15.setTextSize(textSize);
-                    t1TextView16.setTextSize(textSize);
-                    t1TextView17.setTextSize(textSize);
-                    t1TextView18.setTextSize(textSize);
-                    t1TextView19.setTextSize(textSize);
-                    t1TextViewTitle1.setTextSize(22);
-                    t1TextViewTitle2.setTextSize(22);
-                    t1TextViewTitle3.setTextSize(22);
+                    for (int i = 0; i < textView.length; i++) {
+                        textView[i].setTextSize(textSize);
+                    }
+                    for (int i = 0; i < textViewTitle.length; i++) {
+                        textViewTitle[i].setTextSize(22);
+                    }
                 }
             }
         });
@@ -149,52 +128,20 @@ public class TopicOneActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (textSize == 20) {
                     textSize = textSize - 2;
-                    t1TextView1.setTextSize(textSize);
-                    t1TextView2.setTextSize(textSize);
-                    t1TextView3.setTextSize(textSize);
-                    t1TextView4.setTextSize(textSize);
-                    t1TextView5.setTextSize(textSize);
-                    t1TextView6.setTextSize(textSize);
-                    t1TextView7.setTextSize(textSize);
-                    t1TextView8.setTextSize(textSize);
-                    t1TextView9.setTextSize(textSize);
-                    t1TextView10.setTextSize(textSize);
-                    t1TextView11.setTextSize(textSize);
-                    t1TextView12.setTextSize(textSize);
-                    t1TextView13.setTextSize(textSize);
-                    t1TextView14.setTextSize(textSize);
-                    t1TextView15.setTextSize(textSize);
-                    t1TextView16.setTextSize(textSize);
-                    t1TextView17.setTextSize(textSize);
-                    t1TextView18.setTextSize(textSize);
-                    t1TextView19.setTextSize(textSize);
-                    t1TextViewTitle1.setTextSize(20);
-                    t1TextViewTitle2.setTextSize(20);
-                    t1TextViewTitle3.setTextSize(20);
+                    for (int i = 0; i < textView.length; i++) {
+                        textView[i].setTextSize(textSize);
+                    }
+                    for (int i = 0; i < textViewTitle.length; i++) {
+                        textViewTitle[i].setTextSize(20);
+                    }
                 } else if (textSize == 18) {
                     textSize = textSize - 2;
-                    t1TextView1.setTextSize(textSize);
-                    t1TextView2.setTextSize(textSize);
-                    t1TextView3.setTextSize(textSize);
-                    t1TextView4.setTextSize(textSize);
-                    t1TextView5.setTextSize(textSize);
-                    t1TextView6.setTextSize(textSize);
-                    t1TextView7.setTextSize(textSize);
-                    t1TextView8.setTextSize(textSize);
-                    t1TextView9.setTextSize(textSize);
-                    t1TextView10.setTextSize(textSize);
-                    t1TextView11.setTextSize(textSize);
-                    t1TextView12.setTextSize(textSize);
-                    t1TextView13.setTextSize(textSize);
-                    t1TextView14.setTextSize(textSize);
-                    t1TextView15.setTextSize(textSize);
-                    t1TextView16.setTextSize(textSize);
-                    t1TextView17.setTextSize(textSize);
-                    t1TextView18.setTextSize(textSize);
-                    t1TextView19.setTextSize(textSize);
-                    t1TextViewTitle1.setTextSize(18);
-                    t1TextViewTitle2.setTextSize(18);
-                    t1TextViewTitle3.setTextSize(18);
+                    for (int i = 0; i < textView.length; i++) {
+                        textView[i].setTextSize(textSize);
+                    }
+                    for (int i = 0; i < textViewTitle.length; i++) {
+                        textViewTitle[i].setTextSize(18);
+                    }
                 }
             }
         });
@@ -204,8 +151,19 @@ public class TopicOneActivity extends AppCompatActivity {
     public void onBackPressed() {
         endTime1 = System.currentTimeMillis();
         long timeDiff = endTime1 - startTime1;
-        int totalSeconds = (int) (timeDiff / 1000);
-        int secs = totalSeconds % 60;
+        int newTime = (int) (timeDiff / 1000);
+
+        Boolean checkId = dbHandler.checkTopicsId(470);
+        if (checkId == true) {
+            Map<String, String> studyTime = dbHandler.getTopicsId(470);
+            if (!studyTime.isEmpty()) {
+                int prevTime = Integer.parseInt(studyTime.get(TIME_IN_SEC));
+                int totalTime = newTime + prevTime;
+                dbHandler.updateTime(new StudyModelClass(470, totalTime));
+            }
+        } else {
+            dbHandler.storeStudyTime(new StudyModelClass(470, newTime));
+        }
 
         super.onBackPressed();
     }

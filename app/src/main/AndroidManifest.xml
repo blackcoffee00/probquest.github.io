@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -14,10 +15,13 @@
         android:theme="@style/Theme.LoginScreen"
         tools:targetApi="31">
         <activity
-            android:name=".TopicSixActivity"
+            android:name=".ui.tests.topicsix.TopicSixPostTestActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.games.puzzles.EasyPuzzleActivity"
+            android:name=".ui.tests.topicsix.TopicSixPreTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.study.TopicSixActivity"
             android:exported="false" />
         <activity
             android:name=".ui.games.ColorRouletteActivity"

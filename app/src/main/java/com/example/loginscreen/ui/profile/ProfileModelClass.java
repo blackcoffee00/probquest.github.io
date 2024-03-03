@@ -3,32 +3,32 @@ package com.example.loginscreen.ui.profile;
 import android.graphics.Bitmap;
 
 public class ProfileModelClass {
-    private Integer id;
+    private Integer profileId;
     private String fname, lname, section;
     private Bitmap image;
 
     public ProfileModelClass(String fname, String lname, String section, Bitmap image) {
-        this.id = id;
+        this.profileId = profileId;
         this.fname = fname;
         this.lname = lname;
         this.section = section;
         this.image = image;
     }
 
-    public ProfileModelClass(Integer id, String fname, String lname, String section, Bitmap image) {
-        this.id = id;
+    public ProfileModelClass(Integer profileId, String fname, String lname, String section, Bitmap image) {
+        this.profileId = profileId;
         this.fname = fname;
         this.lname = lname;
         this.section = section;
         this.image = image;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getProfileId() {
+        return profileId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setProfileId(Integer profileId) {
+        this.profileId = profileId;
     }
 
     public String getFname() {

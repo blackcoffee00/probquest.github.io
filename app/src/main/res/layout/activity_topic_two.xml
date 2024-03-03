@@ -33,160 +33,592 @@
 
     </RelativeLayout>
 
-    <ScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/upper_corner"
-        android:paddingTop="20dp">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/t2ScrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:background="@drawable/upper_corner"
+            android:paddingTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="vertical"
-                android:background="@drawable/custom_edit_passcode">
+                android:layout_marginHorizontal="15dp"
+                android:paddingBottom="50dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/custom_edit_passcode">
+
+                    <TextView
+                        android:id="@+id/t2TextViewTitle1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:drawableStart="@drawable/round_lightbulb_circle_24"
+                        android:drawablePadding="4dp"
+                        android:text="Objective"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:text="In this lesson we will learn how to differentiate between simple events and compound events."
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
 
                 <TextView
+                    android:id="@+id/t2TextViewTitle2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:drawableStart="@drawable/round_lightbulb_circle_24"
-                    android:drawablePadding="4dp"
-                    android:text="Objective"
+                    android:text="Introduction to lesson"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/blue"/>
 
                 <TextView
+                    android:id="@+id/t2TextView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:text="In this lesson we will learn how to differentiate between simple events and compound events."
+                    android:layout_marginBottom="20dp"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t2TextView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t2TextView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="BRAIN TEASER (Differentiate)"
+                    android:textStyle="italic|bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t2TextView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginStart="20dp"
+                    android:text="The probability of tossing three coins and getting at least two heads\nA coin is thrown 3 times. What is the probability that atleast one head is obtained?"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t2TextView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Other terms associated with probability:"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t2TextView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginStart="20dp"
+                    android:text="1. Experiments are activities which have well – defined results.\n2. Outcomes are possible results of an experiment.\n3. Sample Space is the set of all possible outcomes of an experiment.\n4. Event is a subset of the sample space."
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/t2TextViewTitle3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Illustrative Example"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"/>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:columnCount="2"
+                    android:rowCount="4">
+
+                    <TextView
+                        android:id="@+id/t2TextView4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Experiment:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="5dp"
+                        android:text="Tossing a coin twice"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/toss_two_coins"
+                        android:layout_columnWeight="2"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Outcomes:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView7"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="5dp"
+                        android:text="Getting two heads (H,H),\nGetting a head on the first toss and tail on the second toss (H,T),\nGetting tail on the first toss and head on the second toss (T,H), and\nGetting two tails (T,T)."
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView8"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Sample Space:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView9"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="5dp"
+                        android:text="{HH, HT, TH, TT}"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView10"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Event:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView11"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:text="Getting at least one head, getting at most one tail, etc."
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                </GridLayout>
+
+                <TextView
+                    android:id="@+id/t2TextView21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Identify the outcomes, sample space, and event of each experiment."
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:columnCount="2"
+                    android:rowCount="12">
+
+                    <TextView
+                        android:id="@+id/t2TextView16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="1. Experiment:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView17"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="5dp"
+                        android:text="Rolling a six-sided once"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView18"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Outcomes:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/t2EditText1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="5dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView19"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Sample Space:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/t2EditText2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="5dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView20"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Event:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/t2EditText3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView22"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="2. Experiment:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView23"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="5dp"
+                        android:text="Two leaders are selected from five students A, B, C, D, and E to lead a tree planting activity."
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView24"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Outcomes:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/t2EditText4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="5dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView25"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Sample Space:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/t2EditText5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="5dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView26"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Event:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/t2EditText6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView27"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="3. Experiment:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView28"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="5dp"
+                        android:text="Drawing 3 blue balls from 10 blue balls and five red ball"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView29"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Outcomes:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/t2EditText7"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="5dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView30"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Sample Space:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/t2EditText8"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:layout_marginBottom="5dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/t2TextView31"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Event:"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/t2EditText9"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="2"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                </GridLayout>
+
+                <Button
+                    android:id="@+id/saveAns"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="end"
+                    android:background="@drawable/custom_button"
+                    android:paddingHorizontal="15dp"
+                    android:text="Save Answer"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"/>
+
+                <!--Activity-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/custom_edit_passcode"
+                    android:backgroundTint="@color/light_blue"
+                    android:padding="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Activity"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:id="@+id/act1Score"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="16sp"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/black"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/act1Direction"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="Test your knowledge about simple events and compound events by taking this activity!"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                    <Button
+                        android:id="@+id/act1Start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="15dp"
+                        android:background="@drawable/custom_button"
+                        android:backgroundTint="@color/sea_green"
+                        android:text="Start Activity"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"/>
+
+                    <LinearLayout
+                        android:id="@+id/act1Layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/act1Feedback"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="5dp"/>
+
+                        <EditText
+                            android:id="@+id/act1Answer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="2"
+                            android:layout_marginEnd="5dp"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"/>
+
+                        <TextView
+                            android:id="@+id/act1Question"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="12"
+                            android:layout_gravity="center"
+                            android:text="The probability of getting a 4 in rolling a standard die once."
+                            android:textSize="16sp"
+                            android:textColor="@color/black"/>
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/act1Submit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:visibility="gone"
+                        android:background="@drawable/custom_button"
+                        android:backgroundTint="@color/sea_green"
+                        android:text="Submit"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Introduction to lesson"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/blue"/>
+        </ScrollView>
 
-            <TextView
-                android:id="@+id/t2Intro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginStart="20dp"
-                android:textSize="16sp"
-                android:textColor="@color/black"/>
+        <ZoomControls
+            android:id="@+id/t2ZoomControls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_anchor="@+id/t2ScrollView"
+            app:layout_anchorGravity="bottom|center"/>
 
-            <TextView
-                android:id="@+id/sEExamples"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:textSize="16sp"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Illustrative Example"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/blue"/>
-
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:columnCount="2"
-                android:rowCount="4">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:text="Experiment:"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="2"
-                    android:layout_marginBottom="5dp"
-                    android:text="Tossing a coin twice"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:text="Outcomes:"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="2"
-                    android:layout_marginBottom="5dp"
-                    android:text="Getting two heads (H,H),\nGetting a head on the first toss and tail on the second toss (H,T),\nGetting tail on the first toss and head on the second toss (T,H), and\nGetting two tails (T,T)."
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:text="Sample Space:"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="2"
-                    android:layout_marginBottom="5dp"
-                    android:text="{HH, HT, TH, TT}"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:text="Event:"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="2"
-                    android:text="Getting at least one head, getting at most one tail, etc."
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-            </GridLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>

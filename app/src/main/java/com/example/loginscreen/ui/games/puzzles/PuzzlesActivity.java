@@ -30,7 +30,7 @@ public class PuzzlesActivity extends AppCompatActivity {
     private TextView easyTimer, easyQuestion, easySolvedProblems, mediumTimer, mediumQuestion, mediumSolvedProblems, hardTimer, hardQuestion, hardSolvedProblems, scoreHeader, scoreTextView;
     private ImageView puzzlesExit, puzzleMusic, puzzleInstruction, easyExit, easyImage, mediumExit, mediumImage, hardExit, hardImage;
     private EditText easyInput, mediumInput, hardInput;
-    private MediaPlayer puzzleBgMusic, buttonSound, correctSound, wrongSound;
+    private MediaPlayer puzzleBgMusic, buttonSound, correctSound, wrongSound, timerSound;
     private RelativeLayout homeLayout, easyLayout, mediumLayout, hardLayout, scoreLayout;
     private boolean isGameOngoing = false;
     private boolean musicPlaying = true;
@@ -138,6 +138,7 @@ public class PuzzlesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 buttonSound.start();
+                showDialog();
             }
         });
 
@@ -333,17 +334,34 @@ public class PuzzlesActivity extends AppCompatActivity {
             if (puzzleBgMusic != null) {
                 puzzleBgMusic.stop();
                 puzzleBgMusic.release();
+                puzzleBgMusic = null;
             }
             if (buttonSound != null) {
                 buttonSound.release();
+                buttonSound = null;
             }
             if (correctSound != null) {
                 correctSound.release();
+                correctSound = null;
             }
             if (wrongSound != null) {
                 wrongSound.release();
+                wrongSound = null;
+            }
+            if (timerSound != null) {
+                timerSound.release();
+                timerSound = null;
             }
             super.onBackPressed();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (timerSound != null) {
+            timerSound.release();
+            timerSound = null;
         }
     }
 
@@ -520,11 +538,18 @@ public class PuzzlesActivity extends AppCompatActivity {
         mediumTimer.setText(timerFormatted);
         hardTimer.setText(timerFormatted);
 
-        if (timeLeftInMillis < 10000) {
+        if (timeLeftInMillis < 11000) {
             easyTimer.setTextColor(Color.RED);
             mediumTimer.setTextColor(Color.RED);
             hardTimer.setTextColor(Color.RED);
-        } else {
+
+            if (timerSound == null) {
+                timerSound = MediaPlayer.create(PuzzlesActivity.this, R.raw.timer_sound);
+                timerSound.start();
+            }
+        } else if (timeLeftInMillis == 0000) {
+            timerSound.stop();
+        }else {
             easyTimer.setTextColor(Color.WHITE);
             mediumTimer.setTextColor(Color.WHITE);
             hardTimer.setTextColor(Color.WHITE);
@@ -701,5 +726,15 @@ public class PuzzlesActivity extends AppCompatActivity {
             scoreHeader.setText("Hard Level Completed!");
             scoreTextView.setText("Your score is " + solved + " out of " + hardProblemLength);
         }
+    }
+
+    private void showDialog() {
+        String mechanics = getResources().getString(R.string.puzzle_mechanics);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Probability Puzzle Game Mechanics");
+        builder.setMessage(mechanics);
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

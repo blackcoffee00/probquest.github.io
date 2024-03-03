@@ -114,35 +114,42 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void storeImage() {
-        if (!textFName.getText().toString().isEmpty() &&
-                !textSection.getText().toString().isEmpty() &&
-                userImage.getDrawable() != null && bitmapImage !=null) {
+        if (!textFName.getText().toString().isEmpty() && !textSection.getText().toString().isEmpty()) {
+            if (bitmapImage == null) {
+                Cursor cursor = dbHandler.getUser(1);
+                if (cursor.moveToNext()) {
+                    byte[] imageByte = cursor.getBlob(4);
+                    bitmapImage = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+                }
+            }
+            if (bitmapImage != null) {
+                Boolean checkId = dbHandler.checkId(1);
+                if (checkId == true) {
+                    String fname = textFName.getText().toString();
+                    String lname = textLName.getText().toString();
+                    String section = textSection.getText().toString();
+                    Bitmap image = bitmapImage;
 
-            Boolean checkId = dbHandler.checkId(1);
-            if (checkId == true) {
-                String fname = textFName.getText().toString();
-                String lname = textLName.getText().toString();
-                String section = textSection.getText().toString();
-                Bitmap image = bitmapImage;
+                    Boolean updateProfile = dbHandler.updateProfile(new ProfileModelClass(1, fname, lname, section, image));
 
-                Boolean updateProfile = dbHandler.updateProfile(new ProfileModelClass(1, fname, lname, section, image));
+                    if (updateProfile == true) {
+                        Toast.makeText(EditProfileActivity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(EditProfileActivity.this, "Profile is not updated", Toast.LENGTH_SHORT).show();
+                    }
 
-                if (updateProfile == true) {
-                    Toast.makeText(EditProfileActivity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(EditProfileActivity.this, "Profile is not updated", Toast.LENGTH_SHORT).show();
+                    dbHandler.storeData(new ProfileModelClass(1, textFName.getText().toString(), textLName.getText().toString(), textSection.getText().toString(), bitmapImage));
+                    Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
                 }
 
+                Intent intent = new Intent(EditProfileActivity.this, NavigationActivity.class);
+                intent.putExtra("loadToProfileFragment", R.id.navigation_profile);
+                startActivity(intent);
+                finish();
             } else {
-                dbHandler.storeData(new ProfileModelClass(1, textFName.getText().toString(), textLName.getText().toString(), textSection.getText().toString(), bitmapImage));
-                Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditProfileActivity.this, "Please select an image", Toast.LENGTH_SHORT).show();
             }
-
-            Intent intent = new Intent(EditProfileActivity.this, NavigationActivity.class);
-            intent.putExtra("loadToProfileFragment", R.id.navigation_profile);
-            startActivity(intent);
-            finish();
-
         } else {
             Toast.makeText(EditProfileActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
         }

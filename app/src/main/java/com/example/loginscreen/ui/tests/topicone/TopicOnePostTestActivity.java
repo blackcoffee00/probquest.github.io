@@ -1,9 +1,11 @@
 package com.example.loginscreen.ui.tests.topicone;
 
+import static com.example.loginscreen.DBHandler.SCORE;
+import static com.example.loginscreen.DBHandler.TIME;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -22,25 +24,27 @@ import com.example.loginscreen.DBHandler;
 import com.example.loginscreen.NavigationActivity;
 import com.example.loginscreen.R;
 import com.example.loginscreen.ui.tests.TestsModelClass;
+import com.example.loginscreen.ui.tests.ViewResultAdapter;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
 public class TopicOnePostTestActivity extends AppCompatActivity {
     private Button topicOnePostTestBackCode, topicOnePostTestSend, topicOnePostTestBack,topicOnePostTestStart, topicOnePostTestOptA, topicOnePostTestOptB, topicOnePostTestOptC, topicOnePostTestOptD, topicOnePostTestNext, topicOnePostTestResult;
-    private LinearLayout topicOnePostTestEnterPasscode, topicOnePostTestInstruction, topicOnePostTest, topicOnePostTestScore;
+    private LinearLayout topicOnePostTestEnterPasscode, topicOnePostTestInstruction, topicOnePostTest;
     private TextView topicOnePostTestItem, topicOnePostTestTimer, topicOnePostTestQuestion, topicOnePostTestScoreDisp, topicOnePostTestTimeDisp, t1PostTestScore;
     private EditText topicOnePostTestPasscode;
     private ListView topicOnePostTestListView;
-    private RelativeLayout t1PostTestHeader;
+    private RelativeLayout t1PostTestHeader, topicOnePostTestScore;
     private ImageView t1PostTestExit;
     private ProgressBar topicOnePostTestProgress;
     private String topicOnePostTestTotalScore, topicOnePostTestTotalTime, answer, selectedAnswer;
-    private int currentQuestionIndex, score;
+    private int currentQuestionIndex, score, buttonIndex;
     private List<String> testQuestions = new ArrayList<>();
     private List<String> testSolutions = new ArrayList<>();
     private List<String> testAnswers = new ArrayList<>();
@@ -48,21 +52,24 @@ public class TopicOnePostTestActivity extends AppCompatActivity {
     private List<String> btn2 = new ArrayList<>();
     private List<String> btn3 = new ArrayList<>();
     private List<String> btn4 = new ArrayList<>();
-    private int[] btn1bg;
-    private int[] btn2bg;
-    private int[] btn3bg;
-    private int[] btn4bg;
+    private List<Integer> solVis = new ArrayList<>();
+    private List<Integer> ansVis = new ArrayList<>();
+    private int[] mark;
+    private int[] btnbg1;
+    private int[] btnbg2;
+    private int[] btnbg3;
+    private int[] btnbg4;
     private TopiOnePostTestQuestion question = new TopiOnePostTestQuestion();
     private int questionLength = question.questions.length;
     private Set<Integer> shownQuestionIndices = new HashSet<>();
     Random random;
     private Integer passcode;
-    private static final long COUNTDOWN_IN_MILLIS = 181000;
+    private static final long COUNTDOWN_IN_MILLIS = 91000;
     private CountDownTimer countDownTimer;
     private long timeLeftInMillis, startTime;
     private boolean isTestOngoing = false;
     private Boolean checkTestCode;
-    private Cursor cursor;
+    private Map<String, String> scoreAndTime;
     DBHandler dbHandler;
 
     @Override
@@ -104,7 +111,13 @@ public class TopicOnePostTestActivity extends AppCompatActivity {
         t1PostTestScore = findViewById(R.id.t1PostTestScore);
         t1PostTestHeader = findViewById(R.id.t1PostTestHeader);
 
-        ViewResultAdapter viewResultAdapter = new ViewResultAdapter(TopicOnePostTestActivity.this, testQuestions, btn1, btn2, btn3, btn4, testSolutions, testAnswers);
+        mark = new int[questionLength];
+        btnbg1 = new int[questionLength];
+        btnbg2 = new int[questionLength];
+        btnbg3 = new int[questionLength];
+        btnbg4 = new int[questionLength];
+
+        ViewResultAdapter viewResultAdapter = new ViewResultAdapter(TopicOnePostTestActivity.this, testQuestions, btn1, btn2, btn3, btn4, testSolutions, testAnswers, solVis, ansVis, mark, btnbg1, btnbg2, btnbg3, btnbg4);
         topicOnePostTestListView.setAdapter(viewResultAdapter);
 
         checkTestCode = dbHandler.checkCode(6856);
@@ -112,15 +125,14 @@ public class TopicOnePostTestActivity extends AppCompatActivity {
             topicOnePostTestEnterPasscode.setVisibility(View.GONE);
             topicOnePostTestScore.setVisibility(View.VISIBLE);
 
-            cursor = dbHandler.getScoreTime();
-            if (cursor.getCount() > 0) {
-                while (cursor.moveToNext()) {
-                    int testType = cursor.getInt(0);
-                    if (testType == 2) {
-                        topicOnePostTestScoreDisp.setText("Score: " + cursor.getString(2) + "/" + questionLength);
-                        topicOnePostTestTimeDisp.setText("Time: " + cursor.getString(3));
-                    }
-                }
+            scoreAndTime = dbHandler.getScoreTime(6856);
+            if (!scoreAndTime.isEmpty()) {
+                topicOnePostTestScoreDisp.setText("Score: " + scoreAndTime.get(SCORE) + "/" + questionLength);
+                int totalSeconds = Integer.parseInt(scoreAndTime.get(TIME));
+                int min = (totalSeconds % 3600) / 60;
+                int secs = totalSeconds % 60;
+                String totalTime = String.format(Locale.getDefault(), "%02d:%02d", min, secs);
+                topicOnePostTestTimeDisp.setText("Time: " + totalTime);
             }
         } else {
             topicOnePostTestEnterPasscode.setVisibility(View.VISIBLE);
@@ -176,16 +188,16 @@ public class TopicOnePostTestActivity extends AppCompatActivity {
                 t1PostTestScore.setText("Score " + topicOnePostTestTotalScore + "/" + questionLength);
                 ((ViewResultAdapter) topicOnePostTestListView.getAdapter()).notifyDataSetChanged();
 
+                for (int i = 0; i < questionLength; i++) {
+                    solVis.add(View.GONE);
+                    ansVis.add(View.GONE);
+                }
+
                 checkTestCode = dbHandler.checkCode(6856);
                 if (checkTestCode == true) {
-                    cursor = dbHandler.getScoreTime();
-                    if (cursor.getCount() > 0) {
-                        while (cursor.moveToNext()) {
-                            int testType = cursor.getInt(0);
-                            if (testType == 2) {
-                                t1PostTestScore.setText("Score " + cursor.getString(2) + "/" + questionLength);
-                            }
-                        }
+                    scoreAndTime = dbHandler.getScoreTime(6856);
+                    if (!scoreAndTime.isEmpty()) {
+                        t1PostTestScore.setText("Score " + scoreAndTime.get(SCORE) + "/" + questionLength);
                     }
                 }
             }
@@ -194,10 +206,7 @@ public class TopicOnePostTestActivity extends AppCompatActivity {
         t1PostTestExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TopicOnePostTestActivity.this, NavigationActivity.class);
-                intent.putExtra("loadToTestsFragment", R.id.navigation_tests);
-                startActivity(intent);
-                finish();
+                onBackPressed();
             }
         });
 
@@ -224,10 +233,32 @@ public class TopicOnePostTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (selectedAnswer.equals(answer)) {
-                    Toast.makeText(TopicOnePostTestActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                    mark[currentQuestionIndex] = R.drawable.round_check_24;
                     score++;
                 } else {
-                    Toast.makeText(TopicOnePostTestActivity.this, "Wrong", Toast.LENGTH_SHORT).show();
+                    mark[currentQuestionIndex] = R.drawable.round_clear_24;
+                }
+
+                if (buttonIndex == 1) {
+                    btnbg1[currentQuestionIndex] = R.drawable.custom_selected_button;
+                    btnbg2[currentQuestionIndex] = R.drawable.custom_option_button;
+                    btnbg3[currentQuestionIndex] = R.drawable.custom_option_button;
+                    btnbg4[currentQuestionIndex] = R.drawable.custom_option_button;
+                } else if (buttonIndex == 2) {
+                    btnbg2[currentQuestionIndex] = R.drawable.custom_selected_button;
+                    btnbg1[currentQuestionIndex] = R.drawable.custom_option_button;
+                    btnbg3[currentQuestionIndex] = R.drawable.custom_option_button;
+                    btnbg4[currentQuestionIndex] = R.drawable.custom_option_button;
+                } else if (buttonIndex == 3) {
+                    btnbg3[currentQuestionIndex] = R.drawable.custom_selected_button;
+                    btnbg2[currentQuestionIndex] = R.drawable.custom_option_button;
+                    btnbg1[currentQuestionIndex] = R.drawable.custom_option_button;
+                    btnbg4[currentQuestionIndex] = R.drawable.custom_option_button;
+                } else if (buttonIndex == 4) {
+                    btnbg4[currentQuestionIndex] = R.drawable.custom_selected_button;
+                    btnbg1[currentQuestionIndex] = R.drawable.custom_option_button;
+                    btnbg2[currentQuestionIndex] = R.drawable.custom_option_button;
+                    btnbg3[currentQuestionIndex] = R.drawable.custom_option_button;
                 }
 
                 currentQuestionIndex++;
@@ -246,6 +277,7 @@ public class TopicOnePostTestActivity extends AppCompatActivity {
         topicOnePostTestOptA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                buttonIndex = 1;
                 selectedAnswer = topicOnePostTestOptA.getText().toString();
                 topicOnePostTestNext.setVisibility(View.VISIBLE);
                 topicOnePostTestOptA.setBackgroundTintList(getResources().getColorStateList(R.color.blue));
@@ -265,6 +297,7 @@ public class TopicOnePostTestActivity extends AppCompatActivity {
         topicOnePostTestOptB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                buttonIndex = 2;
                 selectedAnswer = topicOnePostTestOptB.getText().toString();
                 topicOnePostTestNext.setVisibility(View.VISIBLE);
                 topicOnePostTestOptB.setBackgroundTintList(getResources().getColorStateList(R.color.blue));
@@ -284,6 +317,7 @@ public class TopicOnePostTestActivity extends AppCompatActivity {
         topicOnePostTestOptC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                buttonIndex = 3;
                 selectedAnswer = topicOnePostTestOptC.getText().toString();
                 topicOnePostTestNext.setVisibility(View.VISIBLE);
                 topicOnePostTestOptC.setBackgroundTintList(getResources().getColorStateList(R.color.blue));
@@ -303,6 +337,7 @@ public class TopicOnePostTestActivity extends AppCompatActivity {
         topicOnePostTestOptD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                buttonIndex = 4;
                 selectedAnswer = topicOnePostTestOptD.getText().toString();
                 topicOnePostTestNext.setVisibility(View.VISIBLE);
                 topicOnePostTestOptD.setBackgroundTintList(getResources().getColorStateList(R.color.blue));
@@ -325,6 +360,10 @@ public class TopicOnePostTestActivity extends AppCompatActivity {
         if (isTestOngoing) {
             Toast.makeText(TopicOnePostTestActivity.this, "Can't go back. Test is ongoing.", Toast.LENGTH_SHORT).show();
         } else {
+            Intent intent = new Intent(TopicOnePostTestActivity.this, NavigationActivity.class);
+            intent.putExtra("loadToTestsFragment", R.id.navigation_tests);
+            startActivity(intent);
+            finish();
             super.onBackPressed();
         }
     }
@@ -429,13 +468,14 @@ public class TopicOnePostTestActivity extends AppCompatActivity {
         long timeDiff = endTime - startTime;
         int totalSeconds = (int) (timeDiff / 1000);
 
-        int hours = totalSeconds / 3600;
         int min = (totalSeconds % 3600) / 60;
         int secs = totalSeconds % 60;
-        topicOnePostTestTotalTime = String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, min, secs);
+        topicOnePostTestTotalTime = String.format(Locale.getDefault(), "%02d:%02d", min, secs);
         topicOnePostTestTimeDisp.setText("Time: " + topicOnePostTestTotalTime);
 
-        dbHandler.storeTestScore(new TestsModelClass(2, 6856, topicOnePostTestTotalScore, topicOnePostTestTotalTime));
+        String totalSecs = String.valueOf(totalSeconds);
+
+        dbHandler.storeTestScore(new TestsModelClass(6856, topicOnePostTestTotalScore, totalSecs));
     }
 
     private void resetButtonStyle() {

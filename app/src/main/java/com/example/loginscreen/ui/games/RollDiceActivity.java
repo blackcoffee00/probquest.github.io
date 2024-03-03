@@ -3,7 +3,9 @@ package com.example.loginscreen.ui.games;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.Cursor;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -15,7 +17,9 @@ import android.widget.Toast;
 
 import com.example.loginscreen.DBHandler;
 import com.example.loginscreen.R;
+import com.example.loginscreen.ui.games.puzzles.PuzzlesActivity;
 
+import java.util.Map;
 import java.util.Random;
 
 public class RollDiceActivity extends AppCompatActivity {
@@ -27,10 +31,9 @@ public class RollDiceActivity extends AppCompatActivity {
     private static final int WIN_GREATER_THAN_7 = 2;
     private static final int WIN_EQUAL_TO_7 = 3;
     private static final int LOSE = 4;
-    private Boolean checkGameId;
-    private Cursor cursor;
-
-    DBHandler dbHandler;
+    private static final String PREFS_FILE_NAME = "RollDiceHighScore";
+    private static final String KEY_HIGH_SCORE = "g1HighScore";
+    private MediaPlayer rollSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +58,8 @@ public class RollDiceActivity extends AppCompatActivity {
         result = 0;
         score = 0;
 
-        dbHandler = new DBHandler(this);
-
-        cursor = dbHandler.getGameScore();
-        while (cursor.moveToNext()) {
-            int gameType = cursor.getInt(0);
-            if (gameType == 1) {
-                rollDiceHighScore.setText("High Score: " + cursor.getString(1));
-            }
-        }
+        loadHighScore();
+        rollDiceHighScore.setText("High Score: " + highScore);
 
         rollDiceExit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,12 +127,13 @@ public class RollDiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (index > 0) {
+                    rollSound = MediaPlayer.create(RollDiceActivity.this, R.raw.rolling_dice_sound);
+                    rollSound.start();
                     rollDice();
                     lessThan7.setEnabled(false);
                     equalTo7.setEnabled(false);
                     greaterThan7.setEnabled(false);
                     rollDiceRoll.setVisibility(View.INVISIBLE);
-                    rollDiceRestart.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -166,6 +163,16 @@ public class RollDiceActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if (rollSound != null) {
+            rollSound.stop();
+            rollSound.release();
+            rollSound = null;
+        }
+        super.onBackPressed();
+    }
+
     private void rollDice() {
         final Animation anim = AnimationUtils.loadAnimation(RollDiceActivity.this, R.anim.roll_button);
         dice1.startAnimation(anim);
@@ -184,6 +191,12 @@ public class RollDiceActivity extends AppCompatActivity {
                     rollAndSetDiceValues();
                     animationCounter = 0;
                 }
+                if (rollSound != null) {
+                    rollSound.stop();
+                    rollSound.release();
+                    rollSound = null;
+                }
+                rollDiceRestart.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -224,26 +237,26 @@ public class RollDiceActivity extends AppCompatActivity {
         }
 
         rollDiceScore.setText("Score: "+score);
+        updateHighScore(score);
+    }
 
-        checkGameId = dbHandler.checkGameId(1);
-        cursor = dbHandler.getGameScore();
+    private void loadHighScore() {
+        SharedPreferences prefs = getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE);
+        highScore = prefs.getInt(KEY_HIGH_SCORE, 0);
+    }
 
-        if (cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                int gameType = cursor.getInt(0);
-                if (gameType == 1) {
-                    highScore = Integer.parseInt(cursor.getString(1));
-                    if (score > highScore) {
-                        dbHandler.updateGameScore(new GameModelClass(1, score));
-                        rollDiceHighScore.setText("High Score: " + score);
-                        Toast.makeText(RollDiceActivity.this, "Updated", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        } else {
-            dbHandler.storeGameScore(new GameModelClass(1, score));
-            rollDiceHighScore.setText("High Score: " + score);
-            Toast.makeText(RollDiceActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+    private void saveHighScore(int score) {
+        SharedPreferences prefs = getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(KEY_HIGH_SCORE, score);
+        editor.apply();
+    }
+
+    private void updateHighScore(int newScore) {
+        if (newScore > highScore) {
+            highScore = newScore;
+            saveHighScore(highScore);
+            rollDiceHighScore.setText("High Score: " + highScore);
         }
     }
 

@@ -47,7 +47,7 @@
                 android:layout_weight="8"
                 android:textSize="16sp"
                 android:textColor="@color/black"
-                android:text="Complete a 4-hour period in the Simple Events topic." />
+                android:text="Complete a 4-hour period in the Simple Events lesson." />
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -103,7 +103,7 @@
                 android:layout_weight="8"
                 android:textSize="16sp"
                 android:textColor="@color/black"
-                android:text="Complete a 4-hour period in the Compound Events topic."/>
+                android:text="Complete a 4-hour period in the Compound Events lesson."/>
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -159,7 +159,7 @@
                 android:layout_weight="8"
                 android:textSize="16sp"
                 android:textColor="@color/black"
-                android:text="Complete a 4-hour period in the Mutually Exclusive Events topic."/>
+                android:text="Complete a 3-hour period in the Mutually Exclusive Events lesson."/>
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -215,7 +215,7 @@
                 android:layout_weight="8"
                 android:textSize="16sp"
                 android:textColor="@color/black"
-                android:text="Complete a 4-hour period in the Non-Mutually Exclusive Events topic."/>
+                android:text="Complete a 3-hour period in the Non-Mutually Exclusive Events lesson."/>
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -271,7 +271,7 @@
                 android:layout_weight="8"
                 android:textSize="16sp"
                 android:textColor="@color/black"
-                android:text="Complete a 4-hour period in the Independent Events topic."/>
+                android:text="Complete a 4-hour period in the Independent Events lesson."/>
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -327,7 +327,7 @@
                 android:layout_weight="8"
                 android:textSize="16sp"
                 android:textColor="@color/black"
-                android:text="Complete a 4-hour period in the Dependent Events topic."/>
+                android:text="Complete a 4-hour period in the Dependent Events lesson."/>
 
             <RelativeLayout
                 android:layout_width="0dp"

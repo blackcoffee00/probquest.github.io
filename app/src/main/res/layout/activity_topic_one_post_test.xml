@@ -261,60 +261,75 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/topicOnePostTestScore"
             android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:src="@drawable/crown"/>
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:layout_centerInParent="true"
+                app:lottie_rawRes="@raw/confetti"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"/>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Post-Test Complete!"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:layout_centerInParent="true"
+                android:padding="20dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/topicOnePostTestScoreDisp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Your Score is 0 out of 10."
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="18sp"/>
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/crown"/>
 
-            <TextView
-                android:id="@+id/topicOnePostTestTimeDisp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Total time: 0 seconds"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Simple Events Post-Test Complete!"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
-            <Button
-                android:id="@+id/topicOnePostTestResult"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="View Result"
-                android:textColor="@color/white"
-                android:background="@drawable/custom_button"
-                android:backgroundTint="@color/sea_green"/>
+                <TextView
+                    android:id="@+id/topicOnePostTestScoreDisp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Your Score is 0 out of 10."
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:textSize="18sp"/>
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/topicOnePostTestTimeDisp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total time: 0 seconds"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:textSize="18sp"/>
+
+                <Button
+                    android:id="@+id/topicOnePostTestResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="View Result"
+                    android:textColor="@color/white"
+                    android:background="@drawable/custom_button"
+                    android:backgroundTint="@color/sea_green"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
