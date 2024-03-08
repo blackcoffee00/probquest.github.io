@@ -61,7 +61,7 @@
             android:layout_marginBottom="40dp"
             android:paddingHorizontal="40dp"
             android:background="@drawable/custom_selected_button"
-            android:text="Convert to PDF"
+            android:text="Save as PDF"
             android:textColor="@color/white"/>
 
         <TextView
@@ -95,7 +95,7 @@
             android:layout_marginBottom="40dp"
             android:paddingHorizontal="40dp"
             android:background="@drawable/custom_selected_button"
-            android:text="Convert to PDF"
+            android:text="Save as PDF"
             android:textColor="@color/white"/>
 
         <TextView
@@ -129,7 +129,7 @@
             android:layout_marginBottom="40dp"
             android:paddingHorizontal="40dp"
             android:background="@drawable/custom_selected_button"
-            android:text="Convert to PDF"
+            android:text="Save as PDF"
             android:textColor="@color/white"/>
 
         <TextView
@@ -163,7 +163,7 @@
             android:layout_marginBottom="40dp"
             android:paddingHorizontal="40dp"
             android:background="@drawable/custom_selected_button"
-            android:text="Convert to PDF"
+            android:text="Save as PDF"
             android:textColor="@color/white"/>
 
     </LinearLayout>

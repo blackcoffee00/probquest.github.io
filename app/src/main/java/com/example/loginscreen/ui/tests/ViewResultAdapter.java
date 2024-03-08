@@ -18,20 +18,9 @@ import ru.noties.jlatexmath.JLatexMathView;
 
 public class ViewResultAdapter extends BaseAdapter {
     private Context context;
-    private List<String> questions;
-    private List<String> opt1;
-    private List<String> opt2;
-    private List<String> opt3;
-    private List<String> opt4;
-    private List<String> solution;
-    private List<String> answer;
-    private List<Integer> solVis;
-    private List<Integer> ansVis;
-    private int[] mark;
-    private int[] button1;
-    private int[] button2;
-    private int[] button3;
-    private int[] button4;
+    private List<String> questions, opt1, opt2, opt3, opt4, solution, answer;
+    private List<Integer> solVis, ansVis;
+    private int[] mark, button1, button2, button3, button4;
 
     public ViewResultAdapter(Context context, List<String> questions, List<String> opt1, List<String> opt2, List<String> opt3, List<String> opt4, List<String> solution, List<String> answer, List<Integer> solVis, List<Integer> ansVis, int[] mark, int[] button1, int[] button2, int[] button3, int[] button4) {
         this.context = context;
@@ -70,6 +59,10 @@ public class ViewResultAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.custom_feedback,parent,false);
+        }
+
+        if (position >= getCount()) {
+            return convertView;
         }
 
         ImageView imageViewMark = convertView.findViewById(R.id.imageViewMarkT2);

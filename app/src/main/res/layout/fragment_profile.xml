@@ -355,7 +355,7 @@
                         android:id="@+id/testsCompletedValue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0/7"
+                        android:text="0/12"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -698,7 +698,7 @@
         <ImageView
             android:id="@+id/tutorialImage4"
             android:layout_width="match_parent"
-            android:layout_height="330dp"
+            android:layout_height="320dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:scaleType="fitEnd"

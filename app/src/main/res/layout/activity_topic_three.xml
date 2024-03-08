@@ -656,7 +656,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:text="Test your knowledge about simple events and compound events by taking this activity!"
+                        android:text="Test your knowledge about mutually exclusive events by taking this activity!"
                         android:textColor="@color/black"
                         android:textSize="16sp"/>
 

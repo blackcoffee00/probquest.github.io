@@ -374,6 +374,13 @@ public class StudyFragment extends Fragment {
                 for (int i = 0; i < buttons.length; i++) {
                     buttons[i].setEnabled(true);
                 }
+
+                scrollView1.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        return false;
+                    }
+                });
             }
         });
 
@@ -396,7 +403,7 @@ public class StudyFragment extends Fragment {
         progressTextT5 = view.findViewById(R.id.progressTextT5);
         progressTextT6 = view.findViewById(R.id.progressTextT6);
 
-        int time = 14400;
+        int time = 14400;//14400;
 
         studyTime1 = dbHandler.getTopicsId(470);
         studyTime2 = dbHandler.getTopicsId(901);
@@ -415,11 +422,11 @@ public class StudyFragment extends Fragment {
         }
         if (!studyTime3.isEmpty()) {
             int timeInSec3 = Integer.parseInt(studyTime3.get(TIME_IN_SEC));
-            progressT3 = (int) (((float) timeInSec3/10800)*100);
+            progressT3 = (int) (((float) timeInSec3/10800)*100);//10800
         }
         if (!studyTime4.isEmpty()) {
             int timeInSec4 = Integer.parseInt(studyTime4.get(TIME_IN_SEC));
-            progressT4 = (int) (((float) timeInSec4/10800)*100);
+            progressT4 = (int) (((float) timeInSec4/10800)*100);//10800
         }
         if (!studyTime5.isEmpty()) {
             int timeInSec5 = Integer.parseInt(studyTime5.get(TIME_IN_SEC));
@@ -454,5 +461,34 @@ public class StudyFragment extends Fragment {
         builder.setView(view);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+    @Override
+    public void onStop()  {
+        super.onStop();
+        if (mediaPlayer1 != null) {
+            mediaPlayer1.stop();
+            mediaPlayer1.release();
+            mediaPlayer1 = null;
+        }
+        if (mediaPlayer2 != null) {
+            mediaPlayer2.stop();
+            mediaPlayer2.release();
+            mediaPlayer2 = null;
+        }
+        if (mediaPlayer3 != null) {
+            mediaPlayer3.stop();
+            mediaPlayer3.release();
+            mediaPlayer3 = null;
+        }
+        handler.removeCallbacks(runnable1);
+        handler.removeCallbacks(runnable2);
+        handler.removeCallbacks(runnable3);
+        handler.removeCallbacks(runnable4);
+        handler.removeCallbacks(runnable5);
+        handler.removeCallbacks(runnable6);
+        handler.removeCallbacks(runnable7);
+        handler.removeCallbacks(runnable8);
+        handler.removeCallbacks(runnable9);
+        handler.removeCallbacks(runnable10);
     }
 }

@@ -337,31 +337,26 @@ public class PuzzlesActivity extends AppCompatActivity {
                 puzzleBgMusic = null;
             }
             if (buttonSound != null) {
+                buttonSound.stop();
                 buttonSound.release();
                 buttonSound = null;
             }
             if (correctSound != null) {
+                correctSound.stop();
                 correctSound.release();
                 correctSound = null;
             }
             if (wrongSound != null) {
+                wrongSound.stop();
                 wrongSound.release();
                 wrongSound = null;
             }
             if (timerSound != null) {
+                timerSound.stop();
                 timerSound.release();
                 timerSound = null;
             }
             super.onBackPressed();
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (timerSound != null) {
-            timerSound.release();
-            timerSound = null;
         }
     }
 

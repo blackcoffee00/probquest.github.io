@@ -8,7 +8,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -44,7 +43,7 @@ import java.util.Map;
 
 public class TestsFragment extends Fragment {
 
-    private CardView topicOnePreTest, topicOnePostTest, topicTwoPreTest, topicTwoPostTest, topicThreePreTest, topicThreePostTest, topicFourPreTest, topicFourPostTest, topicFivePreTest, topicFivePostTest, topicSixPreTest, topicSixPostTest, summativeTest;
+    private CardView topicOnePreTest, topicOnePostTest, topicTwoPreTest, topicTwoPostTest, topicThreePreTest, topicThreePostTest, topicFourPreTest, topicFourPostTest, topicFivePreTest, topicFivePostTest, topicSixPreTest, topicSixPostTest;
     private TextView topicOnePreTestScore, topicOnePreTestTime, topicOnePostTestScore, topicOnePostTestTime, topicTwoPreTestScore, topicTwoPreTestTime, topicTwoPostTestScore, topicTwoPostTestTime, topicThreePreTestScore, topicThreePreTestTime, topicThreePostTestScore, topicThreePostTestTime, topicFourPreTestScore, topicFourPreTestTime, topicFourPostTestScore, topicFourPostTestTime, topicFivePreTestScore, topicFivePreTestTime, topicFivePostTestScore, topicFivePostTestTime, topicSixPreTestScore, topicSixPreTestTime, topicSixPostTestScore, topicSixPostTestTime, summativeTestScore, summativeTestTime, tutorialText2;
     private int testCode11, testCode12, testCode21, testCode22, testCode31, testCode32, testCode41, testCode42, testCode51, testCode52, testCode61, testCode62;
     private Map<String, String> scoreAndTime11, scoreAndTime12, scoreAndTime21, scoreAndTime22, scoreAndTime31, scoreAndTime32, scoreAndTime41, scoreAndTime42, scoreAndTime51, scoreAndTime52, scoreAndTime61, scoreAndTime62;
@@ -77,7 +76,6 @@ public class TestsFragment extends Fragment {
         topicFourPostTest = root.findViewById(R.id.topicFourPostTest);
         topicFivePostTest = root.findViewById(R.id.topicFivePostTest);
         topicSixPostTest = root.findViewById(R.id.topicSixPostTest);
-        summativeTest = root.findViewById(R.id.summativeTest);
 
         topicOnePreTestScore = root.findViewById(R.id.topicOnePreTestScore);
         topicTwoPreTestScore = root.findViewById(R.id.topicTwoPreTestScore);
@@ -92,7 +90,6 @@ public class TestsFragment extends Fragment {
         topicFourPostTestScore = root.findViewById(R.id.topicFourPostTestScore);
         topicFivePostTestScore = root.findViewById(R.id.topicFivePostTestScore);
         topicSixPostTestScore = root.findViewById(R.id.topicSixPostTestScore);
-        summativeTestScore = root.findViewById(R.id.summativeTestScore);
 
         topicOnePreTestTime = root.findViewById(R.id.topicOnePreTestTime);
         topicTwoPreTestTime = root.findViewById(R.id.topicTwoPreTestTime);
@@ -107,7 +104,6 @@ public class TestsFragment extends Fragment {
         topicFourPostTestTime = root.findViewById(R.id.topicFourPostTestTime);
         topicFivePostTestTime = root.findViewById(R.id.topicFivePostTestTime);
         topicSixPostTestTime = root.findViewById(R.id.topicSixPostTestTime);
-        summativeTestTime = root.findViewById(R.id.summativeTestTime);
 
         tutorialTest = root.findViewById(R.id.tutorialTest);
         tutorialCancel2 = root.findViewById(R.id.tutorialCancel2);
@@ -210,14 +206,6 @@ public class TestsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(requireContext(), TopicSixPostTestActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        summativeTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(requireContext(), SummativeTestActivity.class);
                 startActivity(intent);
             }
         });
@@ -332,7 +320,7 @@ public class TestsFragment extends Fragment {
             topicSixPostTestTime.setText("Time: " + totalTime);
         }
 
-        CardView[] cardViews = {topicOnePreTest, topicOnePostTest, topicTwoPreTest, topicTwoPostTest, topicThreePreTest, topicThreePostTest, topicFourPreTest, topicFourPostTest, topicFivePreTest, topicFivePostTest, topicSixPreTest, topicSixPostTest, summativeTest};
+        CardView[] cardViews = {topicOnePreTest, topicOnePostTest, topicTwoPreTest, topicTwoPostTest, topicThreePreTest, topicThreePostTest, topicFourPreTest, topicFourPostTest, topicFivePreTest, topicFivePostTest, topicSixPreTest, topicSixPostTest};
 
         tutorialTest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -455,5 +443,14 @@ public class TestsFragment extends Fragment {
         });
 
         return root;
+    }
+    @Override
+    public void onStop()  {
+        super.onStop();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }

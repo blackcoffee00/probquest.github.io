@@ -1,11 +1,14 @@
 package com.example.loginscreen;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.loginscreen.databinding.ActivityNavigationBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -13,6 +16,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.loginscreen.databinding.ActivityNavigationBinding;
+
+import java.io.IOException;
 
 public class NavigationActivity extends AppCompatActivity {
 
@@ -43,5 +48,6 @@ public class NavigationActivity extends AppCompatActivity {
             int fragmentId = intent.getIntExtra("loadToProfileFragment", R.id.navigation_study);
             navView.setSelectedItemId(fragmentId);
         }
+
     }
 }

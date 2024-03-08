@@ -1,9 +1,14 @@
 package com.example.loginscreen.ui.tests.topicone;
 
+import static com.example.loginscreen.DBHandler.SCORE;
+import static com.example.loginscreen.DBHandler.TIME;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -20,6 +25,8 @@ import android.widget.Toast;
 import com.example.loginscreen.NavigationActivity;
 import com.example.loginscreen.R;
 import com.example.loginscreen.DBHandler;
+import com.example.loginscreen.ui.tests.TestResultModelClass;
+import com.example.loginscreen.ui.tests.TestsModelClass;
 import com.example.loginscreen.ui.tests.ViewResultAdapter;
 
 import java.util.ArrayList;
@@ -40,7 +47,7 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
     private ImageView t1PreTestExit;
     private ProgressBar topicOnePreTestProgress;
     private String answer, selectedAnswer, topicOnePreTestTotalScore, topicOnePreTestTotalTime;
-    private int currentQuestionIndex, score, markIndex, randomIndex, buttonIndex;
+    private int currentQuestionIndex, score, randomIndex, buttonIndex, markImage, btnStyle1, btnStyle2, btnStyle3, btnStyle4, solStyle = View.VISIBLE, ansStyle = View.VISIBLE;
     private List<String> testQuestions = new ArrayList<>();
     private List<String> testSolutions = new ArrayList<>();
     private List<String> testAnswers = new ArrayList<>();
@@ -50,11 +57,7 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
     private List<String> btn4 = new ArrayList<>();
     private List<Integer> solVis = new ArrayList<>();
     private List<Integer> ansVis = new ArrayList<>();
-    private int[] mark;
-    private int[] btnbg1;
-    private int[] btnbg2;
-    private int[] btnbg3;
-    private int[] btnbg4;
+    private int[] mark, btnbg1, btnbg2, btnbg3, btnbg4, storeMark, storeBtnbg1, storeBtnbg2, storeBtnbg3, storeBtnbg4;
     private TopiOnePreTestQuestion question = new TopiOnePreTestQuestion();
     private int questionLength = question.questions.length;
     private Set<Integer> shownQuestionIndices = new HashSet<>();
@@ -113,12 +116,17 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
         btnbg2 = new int[questionLength];
         btnbg3 = new int[questionLength];
         btnbg4 = new int[questionLength];
+        storeMark = new int[questionLength];
+        storeBtnbg1 = new int[questionLength];
+        storeBtnbg2 = new int[questionLength];
+        storeBtnbg3 = new int[questionLength];
+        storeBtnbg4 = new int[questionLength];
 
         ViewResultAdapter viewResultAdapter = new ViewResultAdapter(TopicOnePreTestActivity.this, testQuestions, btn1, btn2, btn3, btn4, testSolutions, testAnswers, solVis, ansVis, mark, btnbg1, btnbg2, btnbg3, btnbg4);
         topicOnePreTestListView.setAdapter(viewResultAdapter);
 
         checkTestCode = dbHandler.checkCode(4276);
-/**        if (checkTestCode == true) {
+        if (checkTestCode == true) {
             topicOnePreTestEnterPasscode.setVisibility(View.GONE);
             topicOnePreTestScore.setVisibility(View.VISIBLE);
 
@@ -134,7 +142,7 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
         } else {
             topicOnePreTestEnterPasscode.setVisibility(View.VISIBLE);
         }
-*/
+
         topicOnePreTestBackCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -150,17 +158,17 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
                 } else {
                     passcode = Integer.valueOf(topicOnePreTestPasscode.getText().toString());
                     checkTestCode = dbHandler.checkCode(passcode);
-/**
+
                     if (checkTestCode == true) {
                         Toast.makeText(TopicOnePreTestActivity.this, "You have already taken this test", Toast.LENGTH_SHORT).show();
-                    } else {*/
+                    } else {
                         if (passcode.equals(4276)) {
                             topicOnePreTestEnterPasscode.setVisibility(View.GONE);
                             topicOnePreTestInstruction.setVisibility(View.VISIBLE);
                         } else {
                             Toast.makeText(TopicOnePreTestActivity.this, "Incorrect passcode", Toast.LENGTH_SHORT).show();
                         }
-                    //}
+                    }
                 }
             }
         });
@@ -181,18 +189,57 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
                 t1PreTestScore.setText("Score " + topicOnePreTestTotalScore + "/" + questionLength);
                 ((ViewResultAdapter) topicOnePreTestListView.getAdapter()).notifyDataSetChanged();
 
+                int markCheck = R.drawable.round_check_24;
+                int markWrong = R.drawable.round_clear_24;
+                int btnSlc = R.drawable.custom_selected_button;
+                int btnOpt = R.drawable.custom_option_button;
+
                 for (int i = 0; i < questionLength; i++) {
+                    TestResultModelClass testResult = dbHandler.getT11Result(i+1);
+                    testQuestions.add(testResult.getTestQuestion());
+                    btn1.add(testResult.getBtn1());
+                    btn2.add(testResult.getBtn2());
+                    btn3.add(testResult.getBtn3());
+                    btn4.add(testResult.getBtn4());
+                    testSolutions.add(testResult.getTestSolution());
+                    testAnswers.add(testResult.getTestAnswer());
                     solVis.add(View.VISIBLE);
                     ansVis.add(View.VISIBLE);
+
+                    if (testResult.getMark() == markCheck) {
+                        mark[i] = R.drawable.round_check_24;
+                    } else if (testResult.getMark() == markWrong) {
+                        mark[i] = R.drawable.round_clear_24;
+                    }
+                    if (testResult.getBtnbg1() == btnOpt) {
+                        btnbg1[i] = R.drawable.custom_option_button;
+                    } else if (testResult.getBtnbg1() == btnSlc) {
+                        btnbg1[i] =R.drawable.custom_selected_button;
+                    }
+                    if (testResult.getBtnbg2() == btnOpt) {
+                        btnbg2[i] = R.drawable.custom_option_button;
+                    } else if (testResult.getBtnbg2() == btnSlc) {
+                        btnbg2[i] =R.drawable.custom_selected_button;
+                    }
+                    if (testResult.getBtnbg3() == btnOpt) {
+                        btnbg3[i] = R.drawable.custom_option_button;
+                    } else if (testResult.getBtnbg3() == btnSlc) {
+                        btnbg3[i] =R.drawable.custom_selected_button;
+                    }
+                    if (testResult.getBtnbg4() == btnOpt) {
+                        btnbg4[i] = R.drawable.custom_option_button;
+                    } else if (testResult.getBtnbg4() == btnSlc) {
+                        btnbg4[i] =R.drawable.custom_selected_button;
+                    }
                 }
-/**
+
                 checkTestCode = dbHandler.checkCode(4276);
                 if (checkTestCode == true) {
                     scoreAndTime = dbHandler.getScoreTime(4276);
                     if (!scoreAndTime.isEmpty()) {
                         t1PreTestScore.setText("Score " + scoreAndTime.get(SCORE) + "/" + questionLength);
                     }
-                }*/
+                }
             }
         });
 
@@ -226,33 +273,50 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (selectedAnswer.equals(answer)) {
-                    mark[currentQuestionIndex] = R.drawable.round_check_24;
+                    storeMark[currentQuestionIndex] = R.drawable.round_check_24;
                     score++;
                 } else {
-                    mark[currentQuestionIndex] = R.drawable.round_clear_24;
+                    storeMark[currentQuestionIndex] = R.drawable.round_clear_24;
                 }
 
                 if (buttonIndex == 1) {
-                    btnbg1[currentQuestionIndex] = R.drawable.custom_selected_button;
-                    btnbg2[currentQuestionIndex] = R.drawable.custom_option_button;
-                    btnbg3[currentQuestionIndex] = R.drawable.custom_option_button;
-                    btnbg4[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg1[currentQuestionIndex] = R.drawable.custom_selected_button;
+                    storeBtnbg2[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg3[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg4[currentQuestionIndex] = R.drawable.custom_option_button;
                 } else if (buttonIndex == 2) {
-                    btnbg2[currentQuestionIndex] = R.drawable.custom_selected_button;
-                    btnbg1[currentQuestionIndex] = R.drawable.custom_option_button;
-                    btnbg3[currentQuestionIndex] = R.drawable.custom_option_button;
-                    btnbg4[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg2[currentQuestionIndex] = R.drawable.custom_selected_button;
+                    storeBtnbg1[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg3[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg4[currentQuestionIndex] = R.drawable.custom_option_button;
                 } else if (buttonIndex == 3) {
-                    btnbg3[currentQuestionIndex] = R.drawable.custom_selected_button;
-                    btnbg2[currentQuestionIndex] = R.drawable.custom_option_button;
-                    btnbg1[currentQuestionIndex] = R.drawable.custom_option_button;
-                    btnbg4[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg3[currentQuestionIndex] = R.drawable.custom_selected_button;
+                    storeBtnbg2[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg1[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg4[currentQuestionIndex] = R.drawable.custom_option_button;
                 } else if (buttonIndex == 4) {
-                    btnbg4[currentQuestionIndex] = R.drawable.custom_selected_button;
-                    btnbg1[currentQuestionIndex] = R.drawable.custom_option_button;
-                    btnbg2[currentQuestionIndex] = R.drawable.custom_option_button;
-                    btnbg3[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg4[currentQuestionIndex] = R.drawable.custom_selected_button;
+                    storeBtnbg1[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg2[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg3[currentQuestionIndex] = R.drawable.custom_option_button;
                 }
+
+                String t11Questions = question.getQuestion(randomIndex);
+                String t11Btn1 = question.getChoice1(randomIndex);
+                String t11Btn2 = question.getChoice2(randomIndex);
+                String t11Btn3 = question.getChoice3(randomIndex);
+                String t11Btn4 = question.getChoice4(randomIndex);
+                String t11Solutions = question.getSolution(randomIndex);
+                String t11Answers = question.getSolAnswer(randomIndex);
+
+                markImage = storeMark[currentQuestionIndex];
+                btnStyle1 = storeBtnbg1[currentQuestionIndex];
+                btnStyle2 = storeBtnbg2[currentQuestionIndex];
+                btnStyle3 = storeBtnbg3[currentQuestionIndex];
+                btnStyle4 = storeBtnbg4[currentQuestionIndex];
+
+                dbHandler.storeT11Result(new TestResultModelClass(t11Questions, t11Btn1, t11Btn2, t11Btn3, t11Btn4, t11Solutions, t11Answers,
+                        solStyle, ansStyle, markImage, btnStyle1, btnStyle2, btnStyle3, btnStyle4));
 
                 currentQuestionIndex++;
 
@@ -379,14 +443,6 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
         topicOnePreTestOptD.setText(question.getChoice4(randomIndex));
         answer = question.getCorrectAnswer(randomIndex);
 
-        testQuestions.add(question.getQuestion(randomIndex));
-        btn1.add(question.getChoice1(randomIndex));
-        btn2.add(question.getChoice2(randomIndex));
-        btn3.add(question.getChoice3(randomIndex));
-        btn4.add(question.getChoice4(randomIndex));
-        testSolutions.add(question.getSolution(randomIndex));
-        testAnswers.add(question.getSolAnswer(randomIndex));
-
         if ((currentQuestionIndex + 1) < questionLength) {
             topicOnePreTestNext.setText("Next");
         } else if ((currentQuestionIndex + 1) == questionLength) {
@@ -465,7 +521,7 @@ public class TopicOnePreTestActivity extends AppCompatActivity {
 
         String totalSecs = String.valueOf(totalSeconds);
 
-        //dbHandler.storeTestScore(new TestsModelClass(4276, topicOnePreTestTotalScore, totalSecs));
+        dbHandler.storeTestScore(new TestsModelClass(4276, topicOnePreTestTotalScore, totalSecs));
     }
 
     private void resetButtonStyle() {

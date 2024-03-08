@@ -27,6 +27,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.loginscreen.DBHandler;
+import com.example.loginscreen.NavigationActivity;
 import com.example.loginscreen.R;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
@@ -110,7 +111,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        int studyTotalTime = 79200;
+        int studyTotalTime = 79200;//79200;
         int testTotalTime = 1080;
         int testTotalScore = 60;
 
@@ -241,7 +242,7 @@ public class ProfileFragment extends Fragment {
         int secs = totalTestTime % 60;
         String totalTime2 = String.format(Locale.getDefault(), "%02d:%02d:%02d", hrs, min, secs);
 
-        testsCompletedValue.setText(completeTests + "/7");
+        testsCompletedValue.setText(completeTests + "/12");
         totalTestsTimeValue.setText(totalTime2);
 
         studyProgressBar.setProgressMax(100f);
@@ -279,6 +280,7 @@ public class ProfileFragment extends Fragment {
                     public void onAnimationEnd(Animation animation) {
                         mediaPlayer = MediaPlayer.create(requireContext(), R.raw.tutorial_profile);
                         mediaPlayer.start();
+
                         handler.postDelayed(runnable1, 5500);
                         handler.postDelayed(runnable2, 11800);
                         handler.postDelayed(runnable3, 19500);
@@ -376,5 +378,14 @@ public class ProfileFragment extends Fragment {
         });
 
         return root;
+    }
+    @Override
+    public void onStop()  {
+        super.onStop();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }

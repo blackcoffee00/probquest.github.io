@@ -205,4 +205,13 @@ public class GamesFragment extends Fragment {
 
         return root;
     }
+    @Override
+    public void onStop()  {
+        super.onStop();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
 }

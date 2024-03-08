@@ -25,6 +25,8 @@ import android.widget.Toast;
 import com.example.loginscreen.DBHandler;
 import com.example.loginscreen.NavigationActivity;
 import com.example.loginscreen.R;
+import com.example.loginscreen.ui.tests.T2TestResultModelClass;
+import com.example.loginscreen.ui.tests.TestResultModelClass;
 import com.example.loginscreen.ui.tests.TestsModelClass;
 import com.example.loginscreen.ui.tests.topictwo.ViewResultAdapterT2;
 
@@ -47,12 +49,10 @@ public class TopicTwoPreTestActivity extends AppCompatActivity {
     private ImageView t2PreTestResultExit;
     private Integer passcode;
     private boolean isTestOngoing = false;
-    private int currentQuestionIndex, score;
+    private int currentQuestionIndex, score, randomIndex, markImage, btnStyle1, btnStyle2;
     private long startTime, timeLeftInMillis;
     private List<String> testQuestions = new ArrayList<>();
-    private int[] mark;
-    private int[] btnbg1;
-    private int[] btnbg2;
+    private int[] mark, btnbg1, btnbg2, storeMark, storeBtnbg1, storeBtnbg2;
     private TopicTwoPreTestQuestion question = new TopicTwoPreTestQuestion();
     private int questionLength = question.questions.length;
     private String answer, selectedAnswer, t2PreTestTotalScore, t2PreTestTotalTime;
@@ -100,6 +100,9 @@ public class TopicTwoPreTestActivity extends AppCompatActivity {
         mark = new int[questionLength];
         btnbg1 = new int[questionLength];
         btnbg2 = new int[questionLength];
+        storeMark = new int[questionLength];
+        storeBtnbg1 = new int[questionLength];
+        storeBtnbg2 = new int[questionLength];
 
         ViewResultAdapterT2 viewResultAdapter = new ViewResultAdapterT2(TopicTwoPreTestActivity.this, testQuestions, mark, btnbg1, btnbg2);
         t2PreTestListView.setAdapter(viewResultAdapter);
@@ -190,19 +193,26 @@ public class TopicTwoPreTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (selectedAnswer.equals(answer)) {
-                    mark[currentQuestionIndex] = R.drawable.round_check_24;
+                    storeMark[currentQuestionIndex] = R.drawable.round_check_24;
                     score++;
                 } else {
-                    mark[currentQuestionIndex] = R.drawable.round_clear_24;
+                    storeMark[currentQuestionIndex] = R.drawable.round_clear_24;
                 }
 
                 if (selectedAnswer.equals("S")) {
-                    btnbg1[currentQuestionIndex] = R.drawable.custom_selected_button;
-                    btnbg2[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg1[currentQuestionIndex] = R.drawable.custom_selected_button;
+                    storeBtnbg2[currentQuestionIndex] = R.drawable.custom_option_button;
                 } else if (selectedAnswer.equals("C")) {
-                    btnbg2[currentQuestionIndex] = R.drawable.custom_selected_button;
-                    btnbg1[currentQuestionIndex] = R.drawable.custom_option_button;
+                    storeBtnbg2[currentQuestionIndex] = R.drawable.custom_selected_button;
+                    storeBtnbg1[currentQuestionIndex] = R.drawable.custom_option_button;
                 }
+
+                String t21Questions = question.getQuestion(randomIndex);
+                markImage = storeMark[currentQuestionIndex];
+                btnStyle1 = storeBtnbg1[currentQuestionIndex];
+                btnStyle2 = storeBtnbg2[currentQuestionIndex];
+
+                dbHandler.storeT21Result(new T2TestResultModelClass(t21Questions, markImage, btnStyle1, btnStyle2));
 
                 currentQuestionIndex++;
 
@@ -225,6 +235,32 @@ public class TopicTwoPreTestActivity extends AppCompatActivity {
                 t2PreTestHeader.setVisibility(View.VISIBLE);
                 t2PreTestResultScore.setText("Score " + t2PreTestTotalScore + "/" + questionLength);
                 ((ViewResultAdapterT2) t2PreTestListView.getAdapter()).notifyDataSetChanged();
+
+                int markCheck = R.drawable.round_check_24;
+                int markWrong = R.drawable.round_clear_24;
+                int btnSlc = R.drawable.custom_selected_button;
+                int btnOpt = R.drawable.custom_option_button;
+
+                for (int i = 0; i < questionLength; i++) {
+                    T2TestResultModelClass testResult = dbHandler.getT21Result(i+1);
+                    testQuestions.add(testResult.getT2TestQuestion());
+
+                    if (testResult.getT2Mark() == markCheck) {
+                        mark[i] = R.drawable.round_check_24;
+                    } else if (testResult.getT2Mark() == markWrong) {
+                        mark[i] = R.drawable.round_clear_24;
+                    }
+                    if (testResult.getT2Btnbg1() == btnOpt) {
+                        btnbg1[i] = R.drawable.custom_option_button;
+                    } else if (testResult.getT2Btnbg1() == btnSlc) {
+                        btnbg1[i] =R.drawable.custom_selected_button;
+                    }
+                    if (testResult.getT2Btnbg2() == btnOpt) {
+                        btnbg2[i] = R.drawable.custom_option_button;
+                    } else if (testResult.getT2Btnbg2() == btnSlc) {
+                        btnbg2[i] =R.drawable.custom_selected_button;
+                    }
+                }
 
                  checkTestCode = dbHandler.checkCode(8603);
                  if (checkTestCode == true) {
@@ -285,7 +321,6 @@ public class TopicTwoPreTestActivity extends AppCompatActivity {
     }
 
     private void NextQuestion() {
-        int randomIndex;
         do {
             randomIndex = random.nextInt(questionLength);
         } while (shownQuestionIndices.contains(randomIndex));
@@ -300,8 +335,6 @@ public class TopicTwoPreTestActivity extends AppCompatActivity {
 
         t2PreTestQuestion.setText(question.getQuestion(randomIndex));
         answer = question.getCorrectAnswer(randomIndex);
-
-        testQuestions.add(question.getQuestion(randomIndex));
 
         if ((currentQuestionIndex + 1) < questionLength) {
             t2PreTestNext.setText("Next");
